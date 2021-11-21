@@ -1,0 +1,7 @@
+{
+  "chain_id": 128,
+  "endpoint": "http://127.0.0.1:8545",
+  "keystore": "",
+  "market_address": "",
+  "db_url": ""
+}
