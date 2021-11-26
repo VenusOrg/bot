@@ -23,22 +23,32 @@ func init() {
 }
 
 type VenusMarket struct {
-	Oid      uint64
-	Address  string
-	Price    string
-	Cycle    uint64
-	EndTime  uint64
-	ScanTime uint64
+	Id        int64 `gorm:"primaryKey"`
+	Address   string
+	Price     string
+	TrigTimes int64 `gorm:"column:trig_times"`
+	// block message
+	Number uint64 `gorm:"index"`
+	TxHash string `gorm:"index"`
 }
 
-func InsetOrder(market *VenusMarket) error {
-	return db.Create(market).Error
+func InsertOrder(order *VenusMarket) error {
+	rows, err := db.Model(&VenusMarket{}).Where("id = ?", order.Id).Rows()
+	if err == nil && rows.Next() {
+		return nil
+	}
+	return db.Create(order).Error
 }
 
-func DelOrder(oid uint64) error {
+func DelOrder(oid int64) error {
 	return db.Where("oid = ?", oid).Delete(&VenusMarket{}).Error
 }
 
-func UpdateScanTime(oid uint64, scanTime uint64) error {
-	return db.Model(&VenusMarket{}).Updates(VenusMarket{Oid: oid, ScanTime: scanTime}).Error
+func ScanOrders() ([]int64, error) {
+	var ids []int64
+	return ids, db.Model(&VenusMarket{}).Pluck("id", &ids).Error
+}
+
+func UpdateOrder(id int64) error {
+	return db.Model(&VenusMarket{}).Where("id = ?", id).Update("trig_times", gorm.Expr("trig_times + 1")).Error
 }

@@ -8,11 +8,13 @@ import (
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/log"
 	"math/big"
 	"os"
 )
 
 type Config struct {
+	StartNumber uint64 `json:"start_number"`
 	ChainId       *big.Int                   `json:"chain_id"`
 	Endpoint      string                     `json:"endpoint"`
 	Keystore      string                     `json:"keystore"`
@@ -52,4 +54,10 @@ func NewConfig(path string, password string) (*Config, error) {
 	}
 
 	return cfg, nil
+}
+
+func checkErr(msg string, err error) {
+	if err != nil {
+		log.Error(msg, "error", err)
+	}
 }
