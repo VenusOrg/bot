@@ -18,18 +18,15 @@ import (
 var (
 	cfg      *Config
 	path     = flag.String("config", "./config.json", "config file path")
+	logFlag  = flag.Int("loglevel", 3, "Log level to use for proxyServer")
 	password = flag.String("password", "123456", "keystore password")
 )
 
-var glogger *log.GlogHandler
-
-func init() {
-	glogger = log.NewGlogHandler(log.StreamHandler(os.Stderr, log.TerminalFormat(false)))
-	glogger.Verbosity(log.LvlInfo)
-	log.Root().SetHandler(glogger)
-}
-
 func main() {
+	// Parse the flags and set up the logger to print everything requested
+	flag.Parse()
+	log.Root().SetHandler(log.LvlFilterHandler(log.Lvl(*logFlag), log.StreamHandler(os.Stderr, log.TerminalFormat(true))))
+
 	var err error
 	cfg, err = NewConfig(*path, *password)
 	if err != nil {
