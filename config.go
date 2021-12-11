@@ -2,11 +2,11 @@ package main
 
 import (
 	"bot/market"
-	"bytes"
 	"encoding/json"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/log"
 	"math/big"
@@ -14,16 +14,16 @@ import (
 )
 
 type Config struct {
-	StartNumber uint64 `json:"start_number"`
+	StartNumber   uint64                     `json:"start_number"`
 	ChainId       *big.Int                   `json:"chain_id"`
 	Endpoint      string                     `json:"endpoint"`
-	Keystore      string                     `json:"keystore"`
+	TrigPrivate   string                     `json:"trig_private"`
 	MarketAddress common.Address             `json:"market_address"`
 	DBurl         string                     `json:"db_url"`
 	MarketSession *market.VenusMarketSession `json:"-"`
 }
 
-func NewConfig(path string, password string) (*Config, error) {
+func NewConfig(path string) (*Config, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
@@ -32,11 +32,11 @@ func NewConfig(path string, password string) (*Config, error) {
 	if err := json.Unmarshal(data, cfg); err != nil {
 		return nil, err
 	}
-	store, err := os.ReadFile(cfg.Keystore)
+	priv, err := crypto.ToECDSA(common.FromHex(cfg.TrigPrivate))
 	if err != nil {
-		utils.Fatalf("keystore read failed", err)
+		return nil, err
 	}
-	account, err := bind.NewTransactorWithChainID(bytes.NewReader(store), password, cfg.ChainId)
+	account, err := bind.NewKeyedTransactorWithChainID(priv, cfg.ChainId)
 	if err != nil {
 		utils.Fatalf("failed to create account", err)
 	}

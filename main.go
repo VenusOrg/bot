@@ -28,7 +28,7 @@ func main() {
 	log.Root().SetHandler(log.LvlFilterHandler(log.Lvl(*logFlag), log.StreamHandler(os.Stderr, log.TerminalFormat(true))))
 
 	var err error
-	cfg, err = NewConfig(*path, *password)
+	cfg, err = NewConfig(*path)
 	if err != nil {
 		utils.Fatalf("config load failed", err)
 	}
