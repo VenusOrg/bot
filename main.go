@@ -113,7 +113,10 @@ func scanOrders() error {
 func trigOrder(id int64) error {
 	start := time.Now().Unix()
 	tmp, err := cfg.MarketSession.Orders(big.NewInt(id))
-	if err == nil && !tmp.Status {
+	if err != nil {
+		return err
+	}
+	if !tmp.Status {
 		return DelOrder(id)
 	}
 	if tmp.EndTime.Int64() > start || tmp.StepTime.Int64() > start {
