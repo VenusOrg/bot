@@ -31,7 +31,7 @@ var (
 // AddressMetaData contains all meta data concerning the Address contract.
 var AddressMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122099b0682def54149baffcf245b5f8e4e70f7e6d10bbb01290df0ae9a2f3f9463464736f6c634300060c0033",
+	Bin: "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122091878a8a7eda7bf6a23bcb6736830e7e73a2998d9b8ead2ffe02236659425e0364736f6c634300060c0033",
 }
 
 // AddressABI is the input ABI used to generate the binding from.
@@ -201,10 +201,1378 @@ func (_Address *AddressTransactorRaw) Transact(opts *bind.TransactOpts, method s
 	return _Address.Contract.contract.Transact(opts, method, params...)
 }
 
+// IERC20MetaData contains all meta data concerning the IERC20 contract.
+var IERC20MetaData = &bind.MetaData{
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	Sigs: map[string]string{
+		"dd62ed3e": "allowance(address,address)",
+		"095ea7b3": "approve(address,uint256)",
+		"70a08231": "balanceOf(address)",
+		"313ce567": "decimals()",
+		"06fdde03": "name()",
+		"95d89b41": "symbol()",
+		"18160ddd": "totalSupply()",
+		"a9059cbb": "transfer(address,uint256)",
+		"23b872dd": "transferFrom(address,address,uint256)",
+	},
+}
+
+// IERC20ABI is the input ABI used to generate the binding from.
+// Deprecated: Use IERC20MetaData.ABI instead.
+var IERC20ABI = IERC20MetaData.ABI
+
+// Deprecated: Use IERC20MetaData.Sigs instead.
+// IERC20FuncSigs maps the 4-byte function signature to its string representation.
+var IERC20FuncSigs = IERC20MetaData.Sigs
+
+// IERC20 is an auto generated Go binding around an Ethereum contract.
+type IERC20 struct {
+	IERC20Caller     // Read-only binding to the contract
+	IERC20Transactor // Write-only binding to the contract
+	IERC20Filterer   // Log filterer for contract events
+}
+
+// IERC20Caller is an auto generated read-only Go binding around an Ethereum contract.
+type IERC20Caller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IERC20Transactor is an auto generated write-only Go binding around an Ethereum contract.
+type IERC20Transactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IERC20Filterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type IERC20Filterer struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IERC20Session is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type IERC20Session struct {
+	Contract     *IERC20           // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// IERC20CallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type IERC20CallerSession struct {
+	Contract *IERC20Caller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts // Call options to use throughout this session
+}
+
+// IERC20TransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type IERC20TransactorSession struct {
+	Contract     *IERC20Transactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
+}
+
+// IERC20Raw is an auto generated low-level Go binding around an Ethereum contract.
+type IERC20Raw struct {
+	Contract *IERC20 // Generic contract binding to access the raw methods on
+}
+
+// IERC20CallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type IERC20CallerRaw struct {
+	Contract *IERC20Caller // Generic read-only contract binding to access the raw methods on
+}
+
+// IERC20TransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type IERC20TransactorRaw struct {
+	Contract *IERC20Transactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewIERC20 creates a new instance of IERC20, bound to a specific deployed contract.
+func NewIERC20(address common.Address, backend bind.ContractBackend) (*IERC20, error) {
+	contract, err := bindIERC20(address, backend, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &IERC20{IERC20Caller: IERC20Caller{contract: contract}, IERC20Transactor: IERC20Transactor{contract: contract}, IERC20Filterer: IERC20Filterer{contract: contract}}, nil
+}
+
+// NewIERC20Caller creates a new read-only instance of IERC20, bound to a specific deployed contract.
+func NewIERC20Caller(address common.Address, caller bind.ContractCaller) (*IERC20Caller, error) {
+	contract, err := bindIERC20(address, caller, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IERC20Caller{contract: contract}, nil
+}
+
+// NewIERC20Transactor creates a new write-only instance of IERC20, bound to a specific deployed contract.
+func NewIERC20Transactor(address common.Address, transactor bind.ContractTransactor) (*IERC20Transactor, error) {
+	contract, err := bindIERC20(address, nil, transactor, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IERC20Transactor{contract: contract}, nil
+}
+
+// NewIERC20Filterer creates a new log filterer instance of IERC20, bound to a specific deployed contract.
+func NewIERC20Filterer(address common.Address, filterer bind.ContractFilterer) (*IERC20Filterer, error) {
+	contract, err := bindIERC20(address, nil, nil, filterer)
+	if err != nil {
+		return nil, err
+	}
+	return &IERC20Filterer{contract: contract}, nil
+}
+
+// bindIERC20 binds a generic wrapper to an already deployed contract.
+func bindIERC20(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(IERC20ABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_IERC20 *IERC20Raw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IERC20.Contract.IERC20Caller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_IERC20 *IERC20Raw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IERC20.Contract.IERC20Transactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_IERC20 *IERC20Raw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IERC20.Contract.IERC20Transactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_IERC20 *IERC20CallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IERC20.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_IERC20 *IERC20TransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IERC20.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_IERC20 *IERC20TransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IERC20.Contract.contract.Transact(opts, method, params...)
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(address owner, address spender) view returns(uint256)
+func (_IERC20 *IERC20Caller) Allowance(opts *bind.CallOpts, owner common.Address, spender common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _IERC20.contract.Call(opts, &out, "allowance", owner, spender)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(address owner, address spender) view returns(uint256)
+func (_IERC20 *IERC20Session) Allowance(owner common.Address, spender common.Address) (*big.Int, error) {
+	return _IERC20.Contract.Allowance(&_IERC20.CallOpts, owner, spender)
+}
+
+// Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
+//
+// Solidity: function allowance(address owner, address spender) view returns(uint256)
+func (_IERC20 *IERC20CallerSession) Allowance(owner common.Address, spender common.Address) (*big.Int, error) {
+	return _IERC20.Contract.Allowance(&_IERC20.CallOpts, owner, spender)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(address owner) view returns(uint256)
+func (_IERC20 *IERC20Caller) BalanceOf(opts *bind.CallOpts, owner common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _IERC20.contract.Call(opts, &out, "balanceOf", owner)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(address owner) view returns(uint256)
+func (_IERC20 *IERC20Session) BalanceOf(owner common.Address) (*big.Int, error) {
+	return _IERC20.Contract.BalanceOf(&_IERC20.CallOpts, owner)
+}
+
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
+//
+// Solidity: function balanceOf(address owner) view returns(uint256)
+func (_IERC20 *IERC20CallerSession) BalanceOf(owner common.Address) (*big.Int, error) {
+	return _IERC20.Contract.BalanceOf(&_IERC20.CallOpts, owner)
+}
+
+// Decimals is a free data retrieval call binding the contract method 0x313ce567.
+//
+// Solidity: function decimals() view returns(uint8)
+func (_IERC20 *IERC20Caller) Decimals(opts *bind.CallOpts) (uint8, error) {
+	var out []interface{}
+	err := _IERC20.contract.Call(opts, &out, "decimals")
+
+	if err != nil {
+		return *new(uint8), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
+
+	return out0, err
+
+}
+
+// Decimals is a free data retrieval call binding the contract method 0x313ce567.
+//
+// Solidity: function decimals() view returns(uint8)
+func (_IERC20 *IERC20Session) Decimals() (uint8, error) {
+	return _IERC20.Contract.Decimals(&_IERC20.CallOpts)
+}
+
+// Decimals is a free data retrieval call binding the contract method 0x313ce567.
+//
+// Solidity: function decimals() view returns(uint8)
+func (_IERC20 *IERC20CallerSession) Decimals() (uint8, error) {
+	return _IERC20.Contract.Decimals(&_IERC20.CallOpts)
+}
+
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() view returns(string)
+func (_IERC20 *IERC20Caller) Name(opts *bind.CallOpts) (string, error) {
+	var out []interface{}
+	err := _IERC20.contract.Call(opts, &out, "name")
+
+	if err != nil {
+		return *new(string), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(string)).(*string)
+
+	return out0, err
+
+}
+
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() view returns(string)
+func (_IERC20 *IERC20Session) Name() (string, error) {
+	return _IERC20.Contract.Name(&_IERC20.CallOpts)
+}
+
+// Name is a free data retrieval call binding the contract method 0x06fdde03.
+//
+// Solidity: function name() view returns(string)
+func (_IERC20 *IERC20CallerSession) Name() (string, error) {
+	return _IERC20.Contract.Name(&_IERC20.CallOpts)
+}
+
+// Symbol is a free data retrieval call binding the contract method 0x95d89b41.
+//
+// Solidity: function symbol() view returns(string)
+func (_IERC20 *IERC20Caller) Symbol(opts *bind.CallOpts) (string, error) {
+	var out []interface{}
+	err := _IERC20.contract.Call(opts, &out, "symbol")
+
+	if err != nil {
+		return *new(string), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(string)).(*string)
+
+	return out0, err
+
+}
+
+// Symbol is a free data retrieval call binding the contract method 0x95d89b41.
+//
+// Solidity: function symbol() view returns(string)
+func (_IERC20 *IERC20Session) Symbol() (string, error) {
+	return _IERC20.Contract.Symbol(&_IERC20.CallOpts)
+}
+
+// Symbol is a free data retrieval call binding the contract method 0x95d89b41.
+//
+// Solidity: function symbol() view returns(string)
+func (_IERC20 *IERC20CallerSession) Symbol() (string, error) {
+	return _IERC20.Contract.Symbol(&_IERC20.CallOpts)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() view returns(uint256)
+func (_IERC20 *IERC20Caller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _IERC20.contract.Call(opts, &out, "totalSupply")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() view returns(uint256)
+func (_IERC20 *IERC20Session) TotalSupply() (*big.Int, error) {
+	return _IERC20.Contract.TotalSupply(&_IERC20.CallOpts)
+}
+
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
+//
+// Solidity: function totalSupply() view returns(uint256)
+func (_IERC20 *IERC20CallerSession) TotalSupply() (*big.Int, error) {
+	return _IERC20.Contract.TotalSupply(&_IERC20.CallOpts)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(address spender, uint256 value) returns(bool)
+func (_IERC20 *IERC20Transactor) Approve(opts *bind.TransactOpts, spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.contract.Transact(opts, "approve", spender, value)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(address spender, uint256 value) returns(bool)
+func (_IERC20 *IERC20Session) Approve(spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.Contract.Approve(&_IERC20.TransactOpts, spender, value)
+}
+
+// Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
+//
+// Solidity: function approve(address spender, uint256 value) returns(bool)
+func (_IERC20 *IERC20TransactorSession) Approve(spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.Contract.Approve(&_IERC20.TransactOpts, spender, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(address to, uint256 value) returns(bool)
+func (_IERC20 *IERC20Transactor) Transfer(opts *bind.TransactOpts, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.contract.Transact(opts, "transfer", to, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(address to, uint256 value) returns(bool)
+func (_IERC20 *IERC20Session) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.Contract.Transfer(&_IERC20.TransactOpts, to, value)
+}
+
+// Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
+//
+// Solidity: function transfer(address to, uint256 value) returns(bool)
+func (_IERC20 *IERC20TransactorSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.Contract.Transfer(&_IERC20.TransactOpts, to, value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(address from, address to, uint256 value) returns(bool)
+func (_IERC20 *IERC20Transactor) TransferFrom(opts *bind.TransactOpts, from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.contract.Transact(opts, "transferFrom", from, to, value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(address from, address to, uint256 value) returns(bool)
+func (_IERC20 *IERC20Session) TransferFrom(from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.Contract.TransferFrom(&_IERC20.TransactOpts, from, to, value)
+}
+
+// TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
+//
+// Solidity: function transferFrom(address from, address to, uint256 value) returns(bool)
+func (_IERC20 *IERC20TransactorSession) TransferFrom(from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _IERC20.Contract.TransferFrom(&_IERC20.TransactOpts, from, to, value)
+}
+
+// IERC20ApprovalIterator is returned from FilterApproval and is used to iterate over the raw logs and unpacked data for Approval events raised by the IERC20 contract.
+type IERC20ApprovalIterator struct {
+	Event *IERC20Approval // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *IERC20ApprovalIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IERC20Approval)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(IERC20Approval)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *IERC20ApprovalIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *IERC20ApprovalIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// IERC20Approval represents a Approval event raised by the IERC20 contract.
+type IERC20Approval struct {
+	Owner   common.Address
+	Spender common.Address
+	Value   *big.Int
+	Raw     types.Log // Blockchain specific contextual infos
+}
+
+// FilterApproval is a free log retrieval operation binding the contract event 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925.
+//
+// Solidity: event Approval(address indexed owner, address indexed spender, uint256 value)
+func (_IERC20 *IERC20Filterer) FilterApproval(opts *bind.FilterOpts, owner []common.Address, spender []common.Address) (*IERC20ApprovalIterator, error) {
+
+	var ownerRule []interface{}
+	for _, ownerItem := range owner {
+		ownerRule = append(ownerRule, ownerItem)
+	}
+	var spenderRule []interface{}
+	for _, spenderItem := range spender {
+		spenderRule = append(spenderRule, spenderItem)
+	}
+
+	logs, sub, err := _IERC20.contract.FilterLogs(opts, "Approval", ownerRule, spenderRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IERC20ApprovalIterator{contract: _IERC20.contract, event: "Approval", logs: logs, sub: sub}, nil
+}
+
+// WatchApproval is a free log subscription operation binding the contract event 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925.
+//
+// Solidity: event Approval(address indexed owner, address indexed spender, uint256 value)
+func (_IERC20 *IERC20Filterer) WatchApproval(opts *bind.WatchOpts, sink chan<- *IERC20Approval, owner []common.Address, spender []common.Address) (event.Subscription, error) {
+
+	var ownerRule []interface{}
+	for _, ownerItem := range owner {
+		ownerRule = append(ownerRule, ownerItem)
+	}
+	var spenderRule []interface{}
+	for _, spenderItem := range spender {
+		spenderRule = append(spenderRule, spenderItem)
+	}
+
+	logs, sub, err := _IERC20.contract.WatchLogs(opts, "Approval", ownerRule, spenderRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(IERC20Approval)
+				if err := _IERC20.contract.UnpackLog(event, "Approval", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseApproval is a log parse operation binding the contract event 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925.
+//
+// Solidity: event Approval(address indexed owner, address indexed spender, uint256 value)
+func (_IERC20 *IERC20Filterer) ParseApproval(log types.Log) (*IERC20Approval, error) {
+	event := new(IERC20Approval)
+	if err := _IERC20.contract.UnpackLog(event, "Approval", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// IERC20TransferIterator is returned from FilterTransfer and is used to iterate over the raw logs and unpacked data for Transfer events raised by the IERC20 contract.
+type IERC20TransferIterator struct {
+	Event *IERC20Transfer // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *IERC20TransferIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IERC20Transfer)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(IERC20Transfer)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *IERC20TransferIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *IERC20TransferIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// IERC20Transfer represents a Transfer event raised by the IERC20 contract.
+type IERC20Transfer struct {
+	From  common.Address
+	To    common.Address
+	Value *big.Int
+	Raw   types.Log // Blockchain specific contextual infos
+}
+
+// FilterTransfer is a free log retrieval operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
+//
+// Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
+func (_IERC20 *IERC20Filterer) FilterTransfer(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*IERC20TransferIterator, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _IERC20.contract.FilterLogs(opts, "Transfer", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IERC20TransferIterator{contract: _IERC20.contract, event: "Transfer", logs: logs, sub: sub}, nil
+}
+
+// WatchTransfer is a free log subscription operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
+//
+// Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
+func (_IERC20 *IERC20Filterer) WatchTransfer(opts *bind.WatchOpts, sink chan<- *IERC20Transfer, from []common.Address, to []common.Address) (event.Subscription, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _IERC20.contract.WatchLogs(opts, "Transfer", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(IERC20Transfer)
+				if err := _IERC20.contract.UnpackLog(event, "Transfer", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseTransfer is a log parse operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
+//
+// Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
+func (_IERC20 *IERC20Filterer) ParseTransfer(log types.Log) (*IERC20Transfer, error) {
+	event := new(IERC20Transfer)
+	if err := _IERC20.contract.UnpackLog(event, "Transfer", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// IUniswapV2Router01MetaData contains all meta data concerning the IUniswapV2Router01 contract.
+var IUniswapV2Router01MetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[],\"name\":\"WETH\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountADesired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountBDesired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountAMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountBMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"addLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountTokenDesired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountTokenMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountETHMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"addLiquidityETH\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountToken\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountETH\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveOut\",\"type\":\"uint256\"}],\"name\":\"getAmountIn\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveOut\",\"type\":\"uint256\"}],\"name\":\"getAmountOut\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"}],\"name\":\"getAmountsIn\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"}],\"name\":\"getAmountsOut\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveB\",\"type\":\"uint256\"}],\"name\":\"quote\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountAMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountBMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"removeLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountTokenMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountETHMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"removeLiquidityETH\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountToken\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountETH\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountTokenMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountETHMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"approveMax\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"removeLiquidityETHWithPermit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountToken\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountETH\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountAMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountBMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"approveMax\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"removeLiquidityWithPermit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"swapETHForExactTokens\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOutMin\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"swapExactETHForTokens\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountOutMin\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"swapExactTokensForETH\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountOutMin\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"swapExactTokensForTokens\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountInMax\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"swapTokensForExactETH\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountInMax\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"swapTokensForExactTokens\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	Sigs: map[string]string{
+		"ad5c4648": "WETH()",
+		"e8e33700": "addLiquidity(address,address,uint256,uint256,uint256,uint256,address,uint256)",
+		"f305d719": "addLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+		"c45a0155": "factory()",
+		"85f8c259": "getAmountIn(uint256,uint256,uint256)",
+		"054d50d4": "getAmountOut(uint256,uint256,uint256)",
+		"1f00ca74": "getAmountsIn(uint256,address[])",
+		"d06ca61f": "getAmountsOut(uint256,address[])",
+		"ad615dec": "quote(uint256,uint256,uint256)",
+		"baa2abde": "removeLiquidity(address,address,uint256,uint256,uint256,address,uint256)",
+		"02751cec": "removeLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+		"ded9382a": "removeLiquidityETHWithPermit(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+		"2195995c": "removeLiquidityWithPermit(address,address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+		"fb3bdb41": "swapETHForExactTokens(uint256,address[],address,uint256)",
+		"7ff36ab5": "swapExactETHForTokens(uint256,address[],address,uint256)",
+		"18cbafe5": "swapExactTokensForETH(uint256,uint256,address[],address,uint256)",
+		"38ed1739": "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",
+		"4a25d94a": "swapTokensForExactETH(uint256,uint256,address[],address,uint256)",
+		"8803dbee": "swapTokensForExactTokens(uint256,uint256,address[],address,uint256)",
+	},
+}
+
+// IUniswapV2Router01ABI is the input ABI used to generate the binding from.
+// Deprecated: Use IUniswapV2Router01MetaData.ABI instead.
+var IUniswapV2Router01ABI = IUniswapV2Router01MetaData.ABI
+
+// Deprecated: Use IUniswapV2Router01MetaData.Sigs instead.
+// IUniswapV2Router01FuncSigs maps the 4-byte function signature to its string representation.
+var IUniswapV2Router01FuncSigs = IUniswapV2Router01MetaData.Sigs
+
+// IUniswapV2Router01 is an auto generated Go binding around an Ethereum contract.
+type IUniswapV2Router01 struct {
+	IUniswapV2Router01Caller     // Read-only binding to the contract
+	IUniswapV2Router01Transactor // Write-only binding to the contract
+	IUniswapV2Router01Filterer   // Log filterer for contract events
+}
+
+// IUniswapV2Router01Caller is an auto generated read-only Go binding around an Ethereum contract.
+type IUniswapV2Router01Caller struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IUniswapV2Router01Transactor is an auto generated write-only Go binding around an Ethereum contract.
+type IUniswapV2Router01Transactor struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IUniswapV2Router01Filterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type IUniswapV2Router01Filterer struct {
+	contract *bind.BoundContract // Generic contract wrapper for the low level calls
+}
+
+// IUniswapV2Router01Session is an auto generated Go binding around an Ethereum contract,
+// with pre-set call and transact options.
+type IUniswapV2Router01Session struct {
+	Contract     *IUniswapV2Router01 // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts       // Call options to use throughout this session
+	TransactOpts bind.TransactOpts   // Transaction auth options to use throughout this session
+}
+
+// IUniswapV2Router01CallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// with pre-set call options.
+type IUniswapV2Router01CallerSession struct {
+	Contract *IUniswapV2Router01Caller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts             // Call options to use throughout this session
+}
+
+// IUniswapV2Router01TransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// with pre-set transact options.
+type IUniswapV2Router01TransactorSession struct {
+	Contract     *IUniswapV2Router01Transactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts             // Transaction auth options to use throughout this session
+}
+
+// IUniswapV2Router01Raw is an auto generated low-level Go binding around an Ethereum contract.
+type IUniswapV2Router01Raw struct {
+	Contract *IUniswapV2Router01 // Generic contract binding to access the raw methods on
+}
+
+// IUniswapV2Router01CallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type IUniswapV2Router01CallerRaw struct {
+	Contract *IUniswapV2Router01Caller // Generic read-only contract binding to access the raw methods on
+}
+
+// IUniswapV2Router01TransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type IUniswapV2Router01TransactorRaw struct {
+	Contract *IUniswapV2Router01Transactor // Generic write-only contract binding to access the raw methods on
+}
+
+// NewIUniswapV2Router01 creates a new instance of IUniswapV2Router01, bound to a specific deployed contract.
+func NewIUniswapV2Router01(address common.Address, backend bind.ContractBackend) (*IUniswapV2Router01, error) {
+	contract, err := bindIUniswapV2Router01(address, backend, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &IUniswapV2Router01{IUniswapV2Router01Caller: IUniswapV2Router01Caller{contract: contract}, IUniswapV2Router01Transactor: IUniswapV2Router01Transactor{contract: contract}, IUniswapV2Router01Filterer: IUniswapV2Router01Filterer{contract: contract}}, nil
+}
+
+// NewIUniswapV2Router01Caller creates a new read-only instance of IUniswapV2Router01, bound to a specific deployed contract.
+func NewIUniswapV2Router01Caller(address common.Address, caller bind.ContractCaller) (*IUniswapV2Router01Caller, error) {
+	contract, err := bindIUniswapV2Router01(address, caller, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IUniswapV2Router01Caller{contract: contract}, nil
+}
+
+// NewIUniswapV2Router01Transactor creates a new write-only instance of IUniswapV2Router01, bound to a specific deployed contract.
+func NewIUniswapV2Router01Transactor(address common.Address, transactor bind.ContractTransactor) (*IUniswapV2Router01Transactor, error) {
+	contract, err := bindIUniswapV2Router01(address, nil, transactor, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IUniswapV2Router01Transactor{contract: contract}, nil
+}
+
+// NewIUniswapV2Router01Filterer creates a new log filterer instance of IUniswapV2Router01, bound to a specific deployed contract.
+func NewIUniswapV2Router01Filterer(address common.Address, filterer bind.ContractFilterer) (*IUniswapV2Router01Filterer, error) {
+	contract, err := bindIUniswapV2Router01(address, nil, nil, filterer)
+	if err != nil {
+		return nil, err
+	}
+	return &IUniswapV2Router01Filterer{contract: contract}, nil
+}
+
+// bindIUniswapV2Router01 binds a generic wrapper to an already deployed contract.
+func bindIUniswapV2Router01(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(IUniswapV2Router01ABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_IUniswapV2Router01 *IUniswapV2Router01Raw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IUniswapV2Router01.Contract.IUniswapV2Router01Caller.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_IUniswapV2Router01 *IUniswapV2Router01Raw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.IUniswapV2Router01Transactor.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_IUniswapV2Router01 *IUniswapV2Router01Raw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.IUniswapV2Router01Transactor.contract.Transact(opts, method, params...)
+}
+
+// Call invokes the (constant) contract method with params as input values and
+// sets the output to result. The result type might be a single field for simple
+// returns, a slice of interfaces for anonymous returns and a struct for named
+// returns.
+func (_IUniswapV2Router01 *IUniswapV2Router01CallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IUniswapV2Router01.Contract.contract.Call(opts, result, method, params...)
+}
+
+// Transfer initiates a plain transaction to move funds to the contract, calling
+// its default method if one is available.
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.contract.Transfer(opts)
+}
+
+// Transact invokes the (paid) contract method with params as input values.
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.contract.Transact(opts, method, params...)
+}
+
+// WETH is a free data retrieval call binding the contract method 0xad5c4648.
+//
+// Solidity: function WETH() pure returns(address)
+func (_IUniswapV2Router01 *IUniswapV2Router01Caller) WETH(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _IUniswapV2Router01.contract.Call(opts, &out, "WETH")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// WETH is a free data retrieval call binding the contract method 0xad5c4648.
+//
+// Solidity: function WETH() pure returns(address)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) WETH() (common.Address, error) {
+	return _IUniswapV2Router01.Contract.WETH(&_IUniswapV2Router01.CallOpts)
+}
+
+// WETH is a free data retrieval call binding the contract method 0xad5c4648.
+//
+// Solidity: function WETH() pure returns(address)
+func (_IUniswapV2Router01 *IUniswapV2Router01CallerSession) WETH() (common.Address, error) {
+	return _IUniswapV2Router01.Contract.WETH(&_IUniswapV2Router01.CallOpts)
+}
+
+// Factory is a free data retrieval call binding the contract method 0xc45a0155.
+//
+// Solidity: function factory() pure returns(address)
+func (_IUniswapV2Router01 *IUniswapV2Router01Caller) Factory(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _IUniswapV2Router01.contract.Call(opts, &out, "factory")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// Factory is a free data retrieval call binding the contract method 0xc45a0155.
+//
+// Solidity: function factory() pure returns(address)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) Factory() (common.Address, error) {
+	return _IUniswapV2Router01.Contract.Factory(&_IUniswapV2Router01.CallOpts)
+}
+
+// Factory is a free data retrieval call binding the contract method 0xc45a0155.
+//
+// Solidity: function factory() pure returns(address)
+func (_IUniswapV2Router01 *IUniswapV2Router01CallerSession) Factory() (common.Address, error) {
+	return _IUniswapV2Router01.Contract.Factory(&_IUniswapV2Router01.CallOpts)
+}
+
+// GetAmountIn is a free data retrieval call binding the contract method 0x85f8c259.
+//
+// Solidity: function getAmountIn(uint256 amountOut, uint256 reserveIn, uint256 reserveOut) pure returns(uint256 amountIn)
+func (_IUniswapV2Router01 *IUniswapV2Router01Caller) GetAmountIn(opts *bind.CallOpts, amountOut *big.Int, reserveIn *big.Int, reserveOut *big.Int) (*big.Int, error) {
+	var out []interface{}
+	err := _IUniswapV2Router01.contract.Call(opts, &out, "getAmountIn", amountOut, reserveIn, reserveOut)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// GetAmountIn is a free data retrieval call binding the contract method 0x85f8c259.
+//
+// Solidity: function getAmountIn(uint256 amountOut, uint256 reserveIn, uint256 reserveOut) pure returns(uint256 amountIn)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) GetAmountIn(amountOut *big.Int, reserveIn *big.Int, reserveOut *big.Int) (*big.Int, error) {
+	return _IUniswapV2Router01.Contract.GetAmountIn(&_IUniswapV2Router01.CallOpts, amountOut, reserveIn, reserveOut)
+}
+
+// GetAmountIn is a free data retrieval call binding the contract method 0x85f8c259.
+//
+// Solidity: function getAmountIn(uint256 amountOut, uint256 reserveIn, uint256 reserveOut) pure returns(uint256 amountIn)
+func (_IUniswapV2Router01 *IUniswapV2Router01CallerSession) GetAmountIn(amountOut *big.Int, reserveIn *big.Int, reserveOut *big.Int) (*big.Int, error) {
+	return _IUniswapV2Router01.Contract.GetAmountIn(&_IUniswapV2Router01.CallOpts, amountOut, reserveIn, reserveOut)
+}
+
+// GetAmountOut is a free data retrieval call binding the contract method 0x054d50d4.
+//
+// Solidity: function getAmountOut(uint256 amountIn, uint256 reserveIn, uint256 reserveOut) pure returns(uint256 amountOut)
+func (_IUniswapV2Router01 *IUniswapV2Router01Caller) GetAmountOut(opts *bind.CallOpts, amountIn *big.Int, reserveIn *big.Int, reserveOut *big.Int) (*big.Int, error) {
+	var out []interface{}
+	err := _IUniswapV2Router01.contract.Call(opts, &out, "getAmountOut", amountIn, reserveIn, reserveOut)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// GetAmountOut is a free data retrieval call binding the contract method 0x054d50d4.
+//
+// Solidity: function getAmountOut(uint256 amountIn, uint256 reserveIn, uint256 reserveOut) pure returns(uint256 amountOut)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) GetAmountOut(amountIn *big.Int, reserveIn *big.Int, reserveOut *big.Int) (*big.Int, error) {
+	return _IUniswapV2Router01.Contract.GetAmountOut(&_IUniswapV2Router01.CallOpts, amountIn, reserveIn, reserveOut)
+}
+
+// GetAmountOut is a free data retrieval call binding the contract method 0x054d50d4.
+//
+// Solidity: function getAmountOut(uint256 amountIn, uint256 reserveIn, uint256 reserveOut) pure returns(uint256 amountOut)
+func (_IUniswapV2Router01 *IUniswapV2Router01CallerSession) GetAmountOut(amountIn *big.Int, reserveIn *big.Int, reserveOut *big.Int) (*big.Int, error) {
+	return _IUniswapV2Router01.Contract.GetAmountOut(&_IUniswapV2Router01.CallOpts, amountIn, reserveIn, reserveOut)
+}
+
+// GetAmountsIn is a free data retrieval call binding the contract method 0x1f00ca74.
+//
+// Solidity: function getAmountsIn(uint256 amountOut, address[] path) view returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Caller) GetAmountsIn(opts *bind.CallOpts, amountOut *big.Int, path []common.Address) ([]*big.Int, error) {
+	var out []interface{}
+	err := _IUniswapV2Router01.contract.Call(opts, &out, "getAmountsIn", amountOut, path)
+
+	if err != nil {
+		return *new([]*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([]*big.Int)).(*[]*big.Int)
+
+	return out0, err
+
+}
+
+// GetAmountsIn is a free data retrieval call binding the contract method 0x1f00ca74.
+//
+// Solidity: function getAmountsIn(uint256 amountOut, address[] path) view returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) GetAmountsIn(amountOut *big.Int, path []common.Address) ([]*big.Int, error) {
+	return _IUniswapV2Router01.Contract.GetAmountsIn(&_IUniswapV2Router01.CallOpts, amountOut, path)
+}
+
+// GetAmountsIn is a free data retrieval call binding the contract method 0x1f00ca74.
+//
+// Solidity: function getAmountsIn(uint256 amountOut, address[] path) view returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01CallerSession) GetAmountsIn(amountOut *big.Int, path []common.Address) ([]*big.Int, error) {
+	return _IUniswapV2Router01.Contract.GetAmountsIn(&_IUniswapV2Router01.CallOpts, amountOut, path)
+}
+
+// GetAmountsOut is a free data retrieval call binding the contract method 0xd06ca61f.
+//
+// Solidity: function getAmountsOut(uint256 amountIn, address[] path) view returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Caller) GetAmountsOut(opts *bind.CallOpts, amountIn *big.Int, path []common.Address) ([]*big.Int, error) {
+	var out []interface{}
+	err := _IUniswapV2Router01.contract.Call(opts, &out, "getAmountsOut", amountIn, path)
+
+	if err != nil {
+		return *new([]*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([]*big.Int)).(*[]*big.Int)
+
+	return out0, err
+
+}
+
+// GetAmountsOut is a free data retrieval call binding the contract method 0xd06ca61f.
+//
+// Solidity: function getAmountsOut(uint256 amountIn, address[] path) view returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) GetAmountsOut(amountIn *big.Int, path []common.Address) ([]*big.Int, error) {
+	return _IUniswapV2Router01.Contract.GetAmountsOut(&_IUniswapV2Router01.CallOpts, amountIn, path)
+}
+
+// GetAmountsOut is a free data retrieval call binding the contract method 0xd06ca61f.
+//
+// Solidity: function getAmountsOut(uint256 amountIn, address[] path) view returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01CallerSession) GetAmountsOut(amountIn *big.Int, path []common.Address) ([]*big.Int, error) {
+	return _IUniswapV2Router01.Contract.GetAmountsOut(&_IUniswapV2Router01.CallOpts, amountIn, path)
+}
+
+// Quote is a free data retrieval call binding the contract method 0xad615dec.
+//
+// Solidity: function quote(uint256 amountA, uint256 reserveA, uint256 reserveB) pure returns(uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01Caller) Quote(opts *bind.CallOpts, amountA *big.Int, reserveA *big.Int, reserveB *big.Int) (*big.Int, error) {
+	var out []interface{}
+	err := _IUniswapV2Router01.contract.Call(opts, &out, "quote", amountA, reserveA, reserveB)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// Quote is a free data retrieval call binding the contract method 0xad615dec.
+//
+// Solidity: function quote(uint256 amountA, uint256 reserveA, uint256 reserveB) pure returns(uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) Quote(amountA *big.Int, reserveA *big.Int, reserveB *big.Int) (*big.Int, error) {
+	return _IUniswapV2Router01.Contract.Quote(&_IUniswapV2Router01.CallOpts, amountA, reserveA, reserveB)
+}
+
+// Quote is a free data retrieval call binding the contract method 0xad615dec.
+//
+// Solidity: function quote(uint256 amountA, uint256 reserveA, uint256 reserveB) pure returns(uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01CallerSession) Quote(amountA *big.Int, reserveA *big.Int, reserveB *big.Int) (*big.Int, error) {
+	return _IUniswapV2Router01.Contract.Quote(&_IUniswapV2Router01.CallOpts, amountA, reserveA, reserveB)
+}
+
+// AddLiquidity is a paid mutator transaction binding the contract method 0xe8e33700.
+//
+// Solidity: function addLiquidity(address tokenA, address tokenB, uint256 amountADesired, uint256 amountBDesired, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline) returns(uint256 amountA, uint256 amountB, uint256 liquidity)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) AddLiquidity(opts *bind.TransactOpts, tokenA common.Address, tokenB common.Address, amountADesired *big.Int, amountBDesired *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "addLiquidity", tokenA, tokenB, amountADesired, amountBDesired, amountAMin, amountBMin, to, deadline)
+}
+
+// AddLiquidity is a paid mutator transaction binding the contract method 0xe8e33700.
+//
+// Solidity: function addLiquidity(address tokenA, address tokenB, uint256 amountADesired, uint256 amountBDesired, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline) returns(uint256 amountA, uint256 amountB, uint256 liquidity)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) AddLiquidity(tokenA common.Address, tokenB common.Address, amountADesired *big.Int, amountBDesired *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.AddLiquidity(&_IUniswapV2Router01.TransactOpts, tokenA, tokenB, amountADesired, amountBDesired, amountAMin, amountBMin, to, deadline)
+}
+
+// AddLiquidity is a paid mutator transaction binding the contract method 0xe8e33700.
+//
+// Solidity: function addLiquidity(address tokenA, address tokenB, uint256 amountADesired, uint256 amountBDesired, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline) returns(uint256 amountA, uint256 amountB, uint256 liquidity)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) AddLiquidity(tokenA common.Address, tokenB common.Address, amountADesired *big.Int, amountBDesired *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.AddLiquidity(&_IUniswapV2Router01.TransactOpts, tokenA, tokenB, amountADesired, amountBDesired, amountAMin, amountBMin, to, deadline)
+}
+
+// AddLiquidityETH is a paid mutator transaction binding the contract method 0xf305d719.
+//
+// Solidity: function addLiquidityETH(address token, uint256 amountTokenDesired, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline) payable returns(uint256 amountToken, uint256 amountETH, uint256 liquidity)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) AddLiquidityETH(opts *bind.TransactOpts, token common.Address, amountTokenDesired *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "addLiquidityETH", token, amountTokenDesired, amountTokenMin, amountETHMin, to, deadline)
+}
+
+// AddLiquidityETH is a paid mutator transaction binding the contract method 0xf305d719.
+//
+// Solidity: function addLiquidityETH(address token, uint256 amountTokenDesired, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline) payable returns(uint256 amountToken, uint256 amountETH, uint256 liquidity)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) AddLiquidityETH(token common.Address, amountTokenDesired *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.AddLiquidityETH(&_IUniswapV2Router01.TransactOpts, token, amountTokenDesired, amountTokenMin, amountETHMin, to, deadline)
+}
+
+// AddLiquidityETH is a paid mutator transaction binding the contract method 0xf305d719.
+//
+// Solidity: function addLiquidityETH(address token, uint256 amountTokenDesired, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline) payable returns(uint256 amountToken, uint256 amountETH, uint256 liquidity)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) AddLiquidityETH(token common.Address, amountTokenDesired *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.AddLiquidityETH(&_IUniswapV2Router01.TransactOpts, token, amountTokenDesired, amountTokenMin, amountETHMin, to, deadline)
+}
+
+// RemoveLiquidity is a paid mutator transaction binding the contract method 0xbaa2abde.
+//
+// Solidity: function removeLiquidity(address tokenA, address tokenB, uint256 liquidity, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline) returns(uint256 amountA, uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) RemoveLiquidity(opts *bind.TransactOpts, tokenA common.Address, tokenB common.Address, liquidity *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "removeLiquidity", tokenA, tokenB, liquidity, amountAMin, amountBMin, to, deadline)
+}
+
+// RemoveLiquidity is a paid mutator transaction binding the contract method 0xbaa2abde.
+//
+// Solidity: function removeLiquidity(address tokenA, address tokenB, uint256 liquidity, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline) returns(uint256 amountA, uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) RemoveLiquidity(tokenA common.Address, tokenB common.Address, liquidity *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.RemoveLiquidity(&_IUniswapV2Router01.TransactOpts, tokenA, tokenB, liquidity, amountAMin, amountBMin, to, deadline)
+}
+
+// RemoveLiquidity is a paid mutator transaction binding the contract method 0xbaa2abde.
+//
+// Solidity: function removeLiquidity(address tokenA, address tokenB, uint256 liquidity, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline) returns(uint256 amountA, uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) RemoveLiquidity(tokenA common.Address, tokenB common.Address, liquidity *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.RemoveLiquidity(&_IUniswapV2Router01.TransactOpts, tokenA, tokenB, liquidity, amountAMin, amountBMin, to, deadline)
+}
+
+// RemoveLiquidityETH is a paid mutator transaction binding the contract method 0x02751cec.
+//
+// Solidity: function removeLiquidityETH(address token, uint256 liquidity, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline) returns(uint256 amountToken, uint256 amountETH)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) RemoveLiquidityETH(opts *bind.TransactOpts, token common.Address, liquidity *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "removeLiquidityETH", token, liquidity, amountTokenMin, amountETHMin, to, deadline)
+}
+
+// RemoveLiquidityETH is a paid mutator transaction binding the contract method 0x02751cec.
+//
+// Solidity: function removeLiquidityETH(address token, uint256 liquidity, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline) returns(uint256 amountToken, uint256 amountETH)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) RemoveLiquidityETH(token common.Address, liquidity *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.RemoveLiquidityETH(&_IUniswapV2Router01.TransactOpts, token, liquidity, amountTokenMin, amountETHMin, to, deadline)
+}
+
+// RemoveLiquidityETH is a paid mutator transaction binding the contract method 0x02751cec.
+//
+// Solidity: function removeLiquidityETH(address token, uint256 liquidity, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline) returns(uint256 amountToken, uint256 amountETH)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) RemoveLiquidityETH(token common.Address, liquidity *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.RemoveLiquidityETH(&_IUniswapV2Router01.TransactOpts, token, liquidity, amountTokenMin, amountETHMin, to, deadline)
+}
+
+// RemoveLiquidityETHWithPermit is a paid mutator transaction binding the contract method 0xded9382a.
+//
+// Solidity: function removeLiquidityETHWithPermit(address token, uint256 liquidity, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) returns(uint256 amountToken, uint256 amountETH)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) RemoveLiquidityETHWithPermit(opts *bind.TransactOpts, token common.Address, liquidity *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int, approveMax bool, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "removeLiquidityETHWithPermit", token, liquidity, amountTokenMin, amountETHMin, to, deadline, approveMax, v, r, s)
+}
+
+// RemoveLiquidityETHWithPermit is a paid mutator transaction binding the contract method 0xded9382a.
+//
+// Solidity: function removeLiquidityETHWithPermit(address token, uint256 liquidity, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) returns(uint256 amountToken, uint256 amountETH)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) RemoveLiquidityETHWithPermit(token common.Address, liquidity *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int, approveMax bool, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.RemoveLiquidityETHWithPermit(&_IUniswapV2Router01.TransactOpts, token, liquidity, amountTokenMin, amountETHMin, to, deadline, approveMax, v, r, s)
+}
+
+// RemoveLiquidityETHWithPermit is a paid mutator transaction binding the contract method 0xded9382a.
+//
+// Solidity: function removeLiquidityETHWithPermit(address token, uint256 liquidity, uint256 amountTokenMin, uint256 amountETHMin, address to, uint256 deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) returns(uint256 amountToken, uint256 amountETH)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) RemoveLiquidityETHWithPermit(token common.Address, liquidity *big.Int, amountTokenMin *big.Int, amountETHMin *big.Int, to common.Address, deadline *big.Int, approveMax bool, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.RemoveLiquidityETHWithPermit(&_IUniswapV2Router01.TransactOpts, token, liquidity, amountTokenMin, amountETHMin, to, deadline, approveMax, v, r, s)
+}
+
+// RemoveLiquidityWithPermit is a paid mutator transaction binding the contract method 0x2195995c.
+//
+// Solidity: function removeLiquidityWithPermit(address tokenA, address tokenB, uint256 liquidity, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) returns(uint256 amountA, uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) RemoveLiquidityWithPermit(opts *bind.TransactOpts, tokenA common.Address, tokenB common.Address, liquidity *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int, approveMax bool, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "removeLiquidityWithPermit", tokenA, tokenB, liquidity, amountAMin, amountBMin, to, deadline, approveMax, v, r, s)
+}
+
+// RemoveLiquidityWithPermit is a paid mutator transaction binding the contract method 0x2195995c.
+//
+// Solidity: function removeLiquidityWithPermit(address tokenA, address tokenB, uint256 liquidity, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) returns(uint256 amountA, uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) RemoveLiquidityWithPermit(tokenA common.Address, tokenB common.Address, liquidity *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int, approveMax bool, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.RemoveLiquidityWithPermit(&_IUniswapV2Router01.TransactOpts, tokenA, tokenB, liquidity, amountAMin, amountBMin, to, deadline, approveMax, v, r, s)
+}
+
+// RemoveLiquidityWithPermit is a paid mutator transaction binding the contract method 0x2195995c.
+//
+// Solidity: function removeLiquidityWithPermit(address tokenA, address tokenB, uint256 liquidity, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline, bool approveMax, uint8 v, bytes32 r, bytes32 s) returns(uint256 amountA, uint256 amountB)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) RemoveLiquidityWithPermit(tokenA common.Address, tokenB common.Address, liquidity *big.Int, amountAMin *big.Int, amountBMin *big.Int, to common.Address, deadline *big.Int, approveMax bool, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.RemoveLiquidityWithPermit(&_IUniswapV2Router01.TransactOpts, tokenA, tokenB, liquidity, amountAMin, amountBMin, to, deadline, approveMax, v, r, s)
+}
+
+// SwapETHForExactTokens is a paid mutator transaction binding the contract method 0xfb3bdb41.
+//
+// Solidity: function swapETHForExactTokens(uint256 amountOut, address[] path, address to, uint256 deadline) payable returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) SwapETHForExactTokens(opts *bind.TransactOpts, amountOut *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "swapETHForExactTokens", amountOut, path, to, deadline)
+}
+
+// SwapETHForExactTokens is a paid mutator transaction binding the contract method 0xfb3bdb41.
+//
+// Solidity: function swapETHForExactTokens(uint256 amountOut, address[] path, address to, uint256 deadline) payable returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) SwapETHForExactTokens(amountOut *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapETHForExactTokens(&_IUniswapV2Router01.TransactOpts, amountOut, path, to, deadline)
+}
+
+// SwapETHForExactTokens is a paid mutator transaction binding the contract method 0xfb3bdb41.
+//
+// Solidity: function swapETHForExactTokens(uint256 amountOut, address[] path, address to, uint256 deadline) payable returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) SwapETHForExactTokens(amountOut *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapETHForExactTokens(&_IUniswapV2Router01.TransactOpts, amountOut, path, to, deadline)
+}
+
+// SwapExactETHForTokens is a paid mutator transaction binding the contract method 0x7ff36ab5.
+//
+// Solidity: function swapExactETHForTokens(uint256 amountOutMin, address[] path, address to, uint256 deadline) payable returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) SwapExactETHForTokens(opts *bind.TransactOpts, amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "swapExactETHForTokens", amountOutMin, path, to, deadline)
+}
+
+// SwapExactETHForTokens is a paid mutator transaction binding the contract method 0x7ff36ab5.
+//
+// Solidity: function swapExactETHForTokens(uint256 amountOutMin, address[] path, address to, uint256 deadline) payable returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) SwapExactETHForTokens(amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapExactETHForTokens(&_IUniswapV2Router01.TransactOpts, amountOutMin, path, to, deadline)
+}
+
+// SwapExactETHForTokens is a paid mutator transaction binding the contract method 0x7ff36ab5.
+//
+// Solidity: function swapExactETHForTokens(uint256 amountOutMin, address[] path, address to, uint256 deadline) payable returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) SwapExactETHForTokens(amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapExactETHForTokens(&_IUniswapV2Router01.TransactOpts, amountOutMin, path, to, deadline)
+}
+
+// SwapExactTokensForETH is a paid mutator transaction binding the contract method 0x18cbafe5.
+//
+// Solidity: function swapExactTokensForETH(uint256 amountIn, uint256 amountOutMin, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) SwapExactTokensForETH(opts *bind.TransactOpts, amountIn *big.Int, amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "swapExactTokensForETH", amountIn, amountOutMin, path, to, deadline)
+}
+
+// SwapExactTokensForETH is a paid mutator transaction binding the contract method 0x18cbafe5.
+//
+// Solidity: function swapExactTokensForETH(uint256 amountIn, uint256 amountOutMin, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) SwapExactTokensForETH(amountIn *big.Int, amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapExactTokensForETH(&_IUniswapV2Router01.TransactOpts, amountIn, amountOutMin, path, to, deadline)
+}
+
+// SwapExactTokensForETH is a paid mutator transaction binding the contract method 0x18cbafe5.
+//
+// Solidity: function swapExactTokensForETH(uint256 amountIn, uint256 amountOutMin, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) SwapExactTokensForETH(amountIn *big.Int, amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapExactTokensForETH(&_IUniswapV2Router01.TransactOpts, amountIn, amountOutMin, path, to, deadline)
+}
+
+// SwapExactTokensForTokens is a paid mutator transaction binding the contract method 0x38ed1739.
+//
+// Solidity: function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) SwapExactTokensForTokens(opts *bind.TransactOpts, amountIn *big.Int, amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "swapExactTokensForTokens", amountIn, amountOutMin, path, to, deadline)
+}
+
+// SwapExactTokensForTokens is a paid mutator transaction binding the contract method 0x38ed1739.
+//
+// Solidity: function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) SwapExactTokensForTokens(amountIn *big.Int, amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapExactTokensForTokens(&_IUniswapV2Router01.TransactOpts, amountIn, amountOutMin, path, to, deadline)
+}
+
+// SwapExactTokensForTokens is a paid mutator transaction binding the contract method 0x38ed1739.
+//
+// Solidity: function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) SwapExactTokensForTokens(amountIn *big.Int, amountOutMin *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapExactTokensForTokens(&_IUniswapV2Router01.TransactOpts, amountIn, amountOutMin, path, to, deadline)
+}
+
+// SwapTokensForExactETH is a paid mutator transaction binding the contract method 0x4a25d94a.
+//
+// Solidity: function swapTokensForExactETH(uint256 amountOut, uint256 amountInMax, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) SwapTokensForExactETH(opts *bind.TransactOpts, amountOut *big.Int, amountInMax *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "swapTokensForExactETH", amountOut, amountInMax, path, to, deadline)
+}
+
+// SwapTokensForExactETH is a paid mutator transaction binding the contract method 0x4a25d94a.
+//
+// Solidity: function swapTokensForExactETH(uint256 amountOut, uint256 amountInMax, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) SwapTokensForExactETH(amountOut *big.Int, amountInMax *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapTokensForExactETH(&_IUniswapV2Router01.TransactOpts, amountOut, amountInMax, path, to, deadline)
+}
+
+// SwapTokensForExactETH is a paid mutator transaction binding the contract method 0x4a25d94a.
+//
+// Solidity: function swapTokensForExactETH(uint256 amountOut, uint256 amountInMax, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) SwapTokensForExactETH(amountOut *big.Int, amountInMax *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapTokensForExactETH(&_IUniswapV2Router01.TransactOpts, amountOut, amountInMax, path, to, deadline)
+}
+
+// SwapTokensForExactTokens is a paid mutator transaction binding the contract method 0x8803dbee.
+//
+// Solidity: function swapTokensForExactTokens(uint256 amountOut, uint256 amountInMax, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Transactor) SwapTokensForExactTokens(opts *bind.TransactOpts, amountOut *big.Int, amountInMax *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.contract.Transact(opts, "swapTokensForExactTokens", amountOut, amountInMax, path, to, deadline)
+}
+
+// SwapTokensForExactTokens is a paid mutator transaction binding the contract method 0x8803dbee.
+//
+// Solidity: function swapTokensForExactTokens(uint256 amountOut, uint256 amountInMax, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01Session) SwapTokensForExactTokens(amountOut *big.Int, amountInMax *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapTokensForExactTokens(&_IUniswapV2Router01.TransactOpts, amountOut, amountInMax, path, to, deadline)
+}
+
+// SwapTokensForExactTokens is a paid mutator transaction binding the contract method 0x8803dbee.
+//
+// Solidity: function swapTokensForExactTokens(uint256 amountOut, uint256 amountInMax, address[] path, address to, uint256 deadline) returns(uint256[] amounts)
+func (_IUniswapV2Router01 *IUniswapV2Router01TransactorSession) SwapTokensForExactTokens(amountOut *big.Int, amountInMax *big.Int, path []common.Address, to common.Address, deadline *big.Int) (*types.Transaction, error) {
+	return _IUniswapV2Router01.Contract.SwapTokensForExactTokens(&_IUniswapV2Router01.TransactOpts, amountOut, amountInMax, path, to, deadline)
+}
+
 // SafeMathMetaData contains all meta data concerning the SafeMath contract.
 var SafeMathMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122007befcfde2ca95ab9f77fcc1b9506af41c7c186be8cf4f01e4f58a725b5b9ee364736f6c634300060c0033",
+	Bin: "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122024b9c2528581568a9baf66f6ae53a5163ae8b878ef48b2c74b9974322fcfacbd64736f6c634300060c0033",
 }
 
 // SafeMathABI is the input ABI used to generate the binding from.
@@ -377,7 +1745,7 @@ func (_SafeMath *SafeMathTransactorRaw) Transact(opts *bind.TransactOpts, method
 // TransferHelperMetaData contains all meta data concerning the TransferHelper contract.
 var TransferHelperMetaData = &bind.MetaData{
 	ABI: "[]",
-	Bin: "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212205440f997a139c15474e6fb293ea928c9a8db539fd1c676cb38826fc6490e4f6c64736f6c634300060c0033",
+	Bin: "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122004910045a72df7af8bc85e92efada8fa778277f5c9a6aa26d6b71115d2e3564e64736f6c634300060c0033",
 }
 
 // TransferHelperABI is the input ABI used to generate the binding from.
@@ -770,27 +2138,23 @@ func (_VenusController *VenusControllerCallerSession) IsManager(_mAddr common.Ad
 
 // VenusMarketMetaData contains all meta data concerning the VenusMarket contract.
 var VenusMarketMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"contractVenusController\",\"name\":\"_addrc\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_oid\",\"type\":\"uint256\"}],\"name\":\"CancelOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_oid\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_receiveToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_cycle\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_endTime\",\"type\":\"uint256\"}],\"name\":\"CreateOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_canSell\",\"type\":\"bool\"}],\"name\":\"SetBlackUser\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"addrc\",\"outputs\":[{\"internalType\":\"contractVenusController\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"batchSize\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"blackUser\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_oid\",\"type\":\"uint256\"}],\"name\":\"cancelOrder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_receiveToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_cycle\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_endTime\",\"type\":\"uint256\"}],\"name\":\"createOrder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minCycle\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"nameAddr\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"orderID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"orderIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"orders\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"reciveToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"stepTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"cycle\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"status\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_batch\",\"type\":\"uint256\"}],\"name\":\"setBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_canUse\",\"type\":\"bool\"}],\"name\":\"setBlackUser\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_feeRate\",\"type\":\"uint256\"}],\"name\":\"setFeeRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"succIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_start\",\"type\":\"uint256\"}],\"name\":\"trigTask\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userToOrder\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"contractVenusController\",\"name\":\"_addrc\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_oid\",\"type\":\"uint256\"}],\"name\":\"CancelOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_oid\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_tokenIn\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_tokenOut\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_cycle\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_endTime\",\"type\":\"uint256\"}],\"name\":\"CreateOrder\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_canSell\",\"type\":\"bool\"}],\"name\":\"SetBlackUser\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"addrc\",\"outputs\":[{\"internalType\":\"contractVenusController\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_oid\",\"type\":\"uint256\"}],\"name\":\"cancelOrder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_tokenIn\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_tokenOut\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_cycle\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_endTime\",\"type\":\"uint256\"}],\"name\":\"createOrder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTradingSum\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getUserCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"nameAddr\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"orderID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"orders\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"tokenIn\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenOut\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"stepTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"cycle\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"status\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_feeRate\",\"type\":\"uint256\"}],\"name\":\"setFeeRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tradingSum\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_oid\",\"type\":\"uint256\"}],\"name\":\"trigOrder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userToOrder\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 	Sigs: map[string]string{
 		"913fcfe0": "addrc()",
-		"f4daaba1": "batchSize()",
-		"06926173": "blackUser(address)",
 		"514fcac7": "cancelOrder(uint256)",
-		"328efc47": "createOrder(uint256,address,uint256,uint256)",
+		"dd544f45": "createOrder(uint256,address,address,uint256,uint256)",
 		"978bbdb9": "feeRate()",
-		"a9aa92e8": "minCycle()",
+		"07ec619c": "getTradingSum()",
+		"b5cb15f7": "getUserCount()",
 		"a310d29c": "nameAddr(string)",
 		"81203d03": "orderID()",
-		"864d1260": "orderIndex(uint256)",
 		"a85c38ef": "orders(uint256)",
-		"b76060f7": "setBatch(uint256)",
-		"79e3001a": "setBlackUser(address,bool)",
 		"45596e2e": "setFeeRate(uint256)",
-		"9c23547d": "succIndex()",
-		"d5e7ea62": "trigTask(uint256)",
+		"29dc66c3": "tradingSum()",
+		"f14393bf": "trigOrder(uint256)",
 		"6f53f770": "userToOrder(address)",
 	},
-	Bin: "0x608060405261271060025562015180600755606460085534801561002257600080fd5b50604051610f31380380610f318339818101604052602081101561004557600080fd5b5051600080546001600160a01b039092166001600160a01b0319909216919091179055610eba806100776000396000f3fe608060405234801561001057600080fd5b506004361061010b5760003560e01c8063913fcfe0116100a2578063a85c38ef11610071578063a85c38ef14610323578063a9aa92e81461039b578063b76060f7146103a3578063d5e7ea62146103c0578063f4daaba1146103dd5761010b565b8063913fcfe014610249578063978bbdb91461026d5780639c23547d14610275578063a310d29c1461027d5761010b565b80636f53f770116100de5780636f53f770146101be57806379e3001a146101f657806381203d0314610224578063864d12601461022c5761010b565b80630692617314610110578063328efc471461014a57806345596e2e14610184578063514fcac7146101a1575b600080fd5b6101366004803603602081101561012657600080fd5b50356001600160a01b03166103e5565b604080519115158252519081900360200190f35b6101826004803603608081101561016057600080fd5b508035906001600160a01b0360208201351690604081013590606001356103fa565b005b6101826004803603602081101561019a57600080fd5b5035610700565b610182600480360360208110156101b757600080fd5b50356107bb565b6101e4600480360360208110156101d457600080fd5b50356001600160a01b0316610943565b60408051918252519081900360200190f35b6101826004803603604081101561020c57600080fd5b506001600160a01b0381351690602001351515610955565b6101e4610a6f565b6101e46004803603602081101561024257600080fd5b5035610a75565b610251610a93565b604080516001600160a01b039092168252519081900360200190f35b6101e4610aa2565b6101e4610aa8565b6102516004803603602081101561029357600080fd5b8101906020810181356401000000008111156102ae57600080fd5b8201836020820111156102c057600080fd5b803590602001918460018302840111640100000000831117156102e257600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929550610aae945050505050565b6103406004803603602081101561033957600080fd5b5035610b8a565b60405180896001600160a01b03168152602001888152602001878152602001866001600160a01b0316815260200185815260200184815260200183815260200182151581526020019850505050505050505060405180910390f35b6101e4610bdf565b610182600480360360208110156103b957600080fd5b5035610be5565b610182600480360360208110156103d657600080fd5b5035610ca0565b6101e4610e42565b60066020526000908152604090205460ff1681565b3360009081526006602052604090205460ff1661045e576040805162461bcd60e51b815260206004820152601b60248201527f54686973206163636f756e74206973206e6f7420616c6c6f7765640000000000604482015290519081900360640190fd5b336000908152600560205260409020546104b8576040805162461bcd60e51b81526020600482015260166024820152753ab9b2b91030b63932b0b23c903430b99037b93232b960511b604482015290519081900360640190fd5b6104c183610e48565b61050b576040805162461bcd60e51b81526020600482015260166024820152756e6f74206120636f6e7472616374206164647265737360501b604482015290519081900360640190fd5b600260008154809291906001019190505550604051806101000160405280336001600160a01b031681526020016004805490508152602001858152602001846001600160a01b031681526020014281526020018281526020018381526020016001151581525060036000600254815260200190815260200160002060008201518160000160006101000a8154816001600160a01b0302191690836001600160a01b03160217905550602082015181600101556040820151816002015560608201518160030160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506080820151816004015560a0820151816005015560c0820151816006015560e08201518160070160006101000a81548160ff0219169083151502179055509050506004600254908060018154018082558091505060019003906000526020600020016000909190919091505560025460056000336001600160a01b03166001600160a01b031681526020019081526020016000208190555060075482101561069c5760078290555b600254604080519182523360208301528181018690526001600160a01b03851660608301526080820184905260a08201839052517f23df57ff35565965f751a83073b22102fcf2bf4fb084463c0c5b68ddc9a5b1289181900360c00190a150505050565b6000546040805163f3ae241560e01b815233600482015290516001600160a01b039092169163f3ae241591602480820192602092909190829003018186803b15801561074b57600080fd5b505afa15801561075f573d6000803e3d6000fd5b505050506040513d602081101561077557600080fd5b50516107b6576040805162461bcd60e51b815260206004820152600b60248201526a37b7363ca6b0b730b3b2b960a91b604482015290519081900360640190fd5b600155565b3360009081526006602052604090205460ff1661081f576040805162461bcd60e51b815260206004820152601b60248201527f54686973206163636f756e74206973206e6f7420616c6c6f7765640000000000604482015290519081900360640190fd5b60008181526003602052604090206007015460ff1661087a576040805162461bcd60e51b81526020600482015260126024820152711bdc99195c881a5cc81b9bdd08195e1a5cdd60721b604482015290519081900360640190fd5b6000818152600360205260409020546001600160a01b031633146108e5576040805162461bcd60e51b815260206004820152601960248201527f6f72646572206f776e657220646f65736e2774206d6174636800000000000000604482015290519081900360640190fd5b6000818152600360209081526040808320600701805460ff191690553383526005825280832092909255815183815291517f935c9ad2f1fda9d7eae0d2a512f1521cb7190ee06165414e722366a65975fb6b9281900390910190a150565b60056020526000908152604090205481565b6000546040805163f3ae241560e01b815233600482015290516001600160a01b039092169163f3ae241591602480820192602092909190829003018186803b1580156109a057600080fd5b505afa1580156109b4573d6000803e3d6000fd5b505050506040513d60208110156109ca57600080fd5b5051610a0b576040805162461bcd60e51b815260206004820152600b60248201526a37b7363ca6b0b730b3b2b960a91b604482015290519081900360640190fd5b6001600160a01b038216600081815260066020908152604091829020805460ff191685151590811790915582519384529083015280517f268e635d8b3370e1ab4560005f02806d3efb314b2aca5cea4a68f4f44eb3d9839281900390910190a15050565b60025481565b60048181548110610a8257fe5b600091825260209091200154905081565b6000546001600160a01b031681565b60015481565b60095481565b6000805460405163d502db9760e01b81526020600482018181528551602484015285516001600160a01b039094169363d502db979387938392604490920191908501908083838b5b83811015610b0e578181015183820152602001610af6565b50505050905090810190601f168015610b3b5780820380516001836020036101000a031916815260200191505b509250505060206040518083038186803b158015610b5857600080fd5b505afa158015610b6c573d6000803e3d6000fd5b505050506040513d6020811015610b8257600080fd5b505192915050565b6003602081905260009182526040909120805460018201546002830154938301546004840154600585015460068601546007909601546001600160a01b03958616979496949590931693919290919060ff1688565b60075481565b6000546040805163f3ae241560e01b815233600482015290516001600160a01b039092169163f3ae241591602480820192602092909190829003018186803b158015610c3057600080fd5b505afa158015610c44573d6000803e3d6000fd5b505050506040513d6020811015610c5a57600080fd5b5051610c9b576040805162461bcd60e51b815260206004820152600b60248201526a37b7363ca6b0b730b3b2b960a91b604482015290519081900360640190fd5b600855565b6000546040805163f3ae241560e01b815233600482015290516001600160a01b039092169163f3ae241591602480820192602092909190829003018186803b158015610ceb57600080fd5b505afa158015610cff573d6000803e3d6000fd5b505050506040513d6020811015610d1557600080fd5b5051610d56576040805162461bcd60e51b815260206004820152600b60248201526a37b7363ca6b0b730b3b2b960a91b604482015290519081900360640190fd5b6004548110610d6457610e3f565b60085460045490820190811115610d7a57506004545b815b81811015610e3c578060098190555060006003600060048481548110610d9e57fe5b906000526020600020015481526020019081526020016000209050806005015481600601548260040154011180610dd85750428160040154115b15610ded57600701805460ff19169055610e34565b42816006015482600401540110610e3257805460038201546002830154610e21926001600160a01b03908116921690610e3c565b600681015460048201805490910190555b505b600101610d7c565b50505b50565b60085481565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a4708115801590610e7c5750808214155b94935050505056fea26469706673582212201cd69e5fd8f491d60000ee06eebfac47edd84a47e5ac6851b7baa4ecb91422f764736f6c634300060c0033",
+	Bin: "0x6080604052600a600155600060025561271060035534801561002057600080fd5b506040516113653803806113658339818101604052602081101561004357600080fd5b5051600080546001600160a01b039092166001600160a01b03199092169190911790556112f0806100756000396000f3fe608060405234801561001057600080fd5b50600436106100cf5760003560e01c8063913fcfe01161008c578063a85c38ef11610066578063a85c38ef14610232578063b5cb15f7146102a2578063dd544f45146102aa578063f14393bf146102ec576100cf565b8063913fcfe014610160578063978bbdb914610184578063a310d29c1461018c576100cf565b806307ec619c146100d457806329dc66c3146100ee57806345596e2e146100f6578063514fcac7146101155780636f53f7701461013257806381203d0314610158575b600080fd5b6100dc610309565b60408051918252519081900360200190f35b6100dc61030f565b6101136004803603602081101561010c57600080fd5b5035610315565b005b6101136004803603602081101561012b57600080fd5b5035610432565b6100dc6004803603602081101561014857600080fd5b50356001600160a01b0316610589565b6100dc61059b565b6101686105a1565b604080516001600160a01b039092168252519081900360200190f35b6100dc6105b0565b610168600480360360208110156101a257600080fd5b8101906020810181356401000000008111156101bd57600080fd5b8201836020820111156101cf57600080fd5b803590602001918460018302840111640100000000831117156101f157600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295506105b6945050505050565b61024f6004803603602081101561024857600080fd5b5035610692565b604080516001600160a01b03998a168152602081019890985295881687870152939096166060860152608085019190915260a084015260c083019390935291151560e08201529051908190036101000190f35b6100dc6106e8565b610113600480360360a08110156102c057600080fd5b508035906001600160a01b036020820135811691604081013590911690606081013590608001356106f3565b6101136004803603602081101561030257600080fd5b5035610969565b60025490565b60025481565b6000546040805163f3ae241560e01b815233600482015290516001600160a01b039092169163f3ae241591602480820192602092909190829003018186803b15801561036057600080fd5b505afa158015610374573d6000803e3d6000fd5b505050506040513d602081101561038a57600080fd5b50516103cb576040805162461bcd60e51b815260206004820152600b60248201526a37b7363ca6b0b730b3b2b960a91b604482015290519081900360640190fd5b6000811180156103dc575061271081105b61042d576040805162461bcd60e51b815260206004820152601c60248201527f6665652072617465206d757374206c657373207468616e203130302500000000604482015290519081900360640190fd5b600155565b60008181526004602052604090206007015460ff1661048b576040805162461bcd60e51b815260206004820152601060248201526f6f72646572206973207573656c65737360801b604482015290519081900360640190fd5b6000818152600460205260409020546001600160a01b031633146104f6576040805162461bcd60e51b815260206004820152601960248201527f6f72646572206f776e657220646f65736e2774206d6174636800000000000000604482015290519081900360640190fd5b600081815260046020818152604080842080546001600160a01b03199081168255600182018690556002820180548216905560038201805490911690559283018490556005830184905560068301939093556007909101805460ff19169055815183815291517f935c9ad2f1fda9d7eae0d2a512f1521cb7190ee06165414e722366a65975fb6b9281900390910190a150565b60056020526000908152604090205481565b60035481565b6000546001600160a01b031681565b60015481565b6000805460405163d502db9760e01b81526020600482018181528551602484015285516001600160a01b039094169363d502db979387938392604490920191908501908083838b5b838110156106165781810151838201526020016105fe565b50505050905090810190601f1680156106435780820380516001836020036101000a031916815260200191505b509250505060206040518083038186803b15801561066057600080fd5b505afa158015610674573d6000803e3d6000fd5b505050506040513d602081101561068a57600080fd5b505192915050565b6004602081905260009182526040909120805460018201546002830154600384015494840154600585015460068601546007909601546001600160a01b0395861697949693861695909416939192909160ff1688565b60035461270f190190565b336000908152600560209081526040808320548352600490915290206007015460ff1615610761576040805162461bcd60e51b81526020600482015260166024820152753ab9b2b91030b63932b0b23c903430b99037b93232b960511b604482015290519081900360640190fd5b600360008154809291906001019190505550604051806101000160405280336001600160a01b03168152602001868152602001856001600160a01b03168152602001846001600160a01b031681526020014281526020018281526020018381526020016001151581525060046000600354815260200190815260200160002060008201518160000160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506020820151816001015560408201518160020160006101000a8154816001600160a01b0302191690836001600160a01b0316021790555060608201518160030160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506080820151816004015560a0820151816005015560c0820151816006015560e08201518160070160006101000a81548160ff02191690831515021790555090505060035460056000336001600160a01b03166001600160a01b03168152602001908152602001600020819055507ffd4863916f070195061bc122e7f2e92e7b04d1f0dcfa8ea85d188cc9ac033d1b60035433878787878760405180888152602001876001600160a01b03168152602001868152602001856001600160a01b03168152602001846001600160a01b0316815260200183815260200182815260200197505050505050505060405180910390a15050505050565b6000546040805163f3ae241560e01b815233600482015290516001600160a01b039092169163f3ae241591602480820192602092909190829003018186803b1580156109b457600080fd5b505afa1580156109c8573d6000803e3d6000fd5b505050506040513d60208110156109de57600080fd5b5051610a1f576040805162461bcd60e51b815260206004820152600b60248201526a37b7363ca6b0b730b3b2b960a91b604482015290519081900360640190fd5b60008181526004602052604090206007015460ff16610a78576040805162461bcd60e51b815260206004820152601060248201526f6f72646572206973207573656c65737360801b604482015290519081900360640190fd5b60008181526004602052604090206005810154421115610aa35760078101805460ff19169055610add565b4281600401541015610add57610ab882610ae1565b600681015460048201544203810281610acd57fe5b6004830180549290910490910190555b5050565b6000610b0960405180604001604052806005815260200164464545544f60d81b8152506105b6565b90506001600160a01b038116610b5e576040805162461bcd60e51b81526020600482015260156024820152746e6f742073657420464545544f206164647265737360581b604482015290519081900360640190fd5b610b66611213565b50600082815260046020818152604080842081516101008101835281546001600160a01b03908116825260018084015495830186905260028401548216948301949094526003830154166060820152938101546080850152600581015460a0850152600681015460c08501526007015460ff16151560e084015254919291610bfc9161271091610bf69190610ed4565b90610f36565b90506000610c17828460200151610f7890919063ffffffff16565b60408051600480825260a082019092529192506060919060208201608080368337019050509050600081600081518110610c4d57fe5b60200260200101906001600160a01b031690816001600160a01b031681525050836000015181600181518110610c7f57fe5b60200260200101906001600160a01b031690816001600160a01b031681525050836040015181600281518110610cb157fe5b60200260200101906001600160a01b031690816001600160a01b031681525050836060015181600381518110610ce357fe5b60200260200101906001600160a01b031690816001600160a01b031681525050610d17846040015185600001518786610fba565b610d3e604051806040016040528060068152602001652927aaaa22a960d11b8152506105b6565b6001600160a01b03166338ed173983600084886000015142603c016040518663ffffffff1660e01b81526004018086815260200185815260200180602001846001600160a01b03168152602001838152602001828103825285818151815260200191508051906020019060200280838360005b83811015610dc9578181015183820152602001610db1565b505050509050019650505050505050600060405180830381600087803b158015610df257600080fd5b505af1158015610e06573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526020811015610e2f57600080fd5b8101908080516040519392919084640100000000821115610e4f57600080fd5b908301906020820185811115610e6457600080fd5b8251866020820283011164010000000082111715610e8157600080fd5b82525081516020918201928201910280838360005b83811015610eae578181015183820152602001610e96565b505050509190910160405250505060209095015160028054909101905550505050505050565b600082610ee357506000610f30565b82820282848281610ef057fe5b0414610f2d5760405162461bcd60e51b81526004018080602001828103825260218152602001806112766021913960400191505060405180910390fd5b90505b92915050565b6000610f2d83836040518060400160405280601a81526020017f536166654d6174683a206469766973696f6e206279207a65726f000000000000815250611117565b6000610f2d83836040518060400160405280601e81526020017f536166654d6174683a207375627472616374696f6e206f766572666c6f7700008152506111b9565b604080516001600160a01b0385811660248301528481166044830152606480830185905283518084039091018152608490920183526020820180516001600160e01b03166323b872dd60e01b17815292518251600094606094938a169392918291908083835b6020831061103f5780518252601f199092019160209182019101611020565b6001836020036101000a0380198251168184511680821785525050505050509050019150506000604051808303816000865af19150503d80600081146110a1576040519150601f19603f3d011682016040523d82523d6000602084013e6110a6565b606091505b50915091508180156110d45750805115806110d457508080602001905160208110156110d157600080fd5b50515b61110f5760405162461bcd60e51b81526004018080602001828103825260248152602001806112976024913960400191505060405180910390fd5b505050505050565b600081836111a35760405162461bcd60e51b81526004018080602001828103825283818151815260200191508051906020019080838360005b83811015611168578181015183820152602001611150565b50505050905090810190601f1680156111955780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b5060008385816111af57fe5b0495945050505050565b6000818484111561120b5760405162461bcd60e51b8152602060048201818152835160248401528351909283926044909101919085019080838360008315611168578181015183820152602001611150565b505050900390565b60405180610100016040528060006001600160a01b031681526020016000815260200160006001600160a01b0316815260200160006001600160a01b03168152602001600081526020016000815260200160008152602001600015158152509056fe536166654d6174683a206d756c7469706c69636174696f6e206f766572666c6f775472616e7366657248656c7065723a205452414e534645525f46524f4d5f4641494c4544a264697066735822122076bc578b2329dd164cba338fe8d6472f0da14a7acd4f1e38878b3c404a032dbc64736f6c634300060c0033",
 }
 
 // VenusMarketABI is the input ABI used to generate the binding from.
@@ -995,68 +2359,6 @@ func (_VenusMarket *VenusMarketCallerSession) Addrc() (common.Address, error) {
 	return _VenusMarket.Contract.Addrc(&_VenusMarket.CallOpts)
 }
 
-// BatchSize is a free data retrieval call binding the contract method 0xf4daaba1.
-//
-// Solidity: function batchSize() view returns(uint256)
-func (_VenusMarket *VenusMarketCaller) BatchSize(opts *bind.CallOpts) (*big.Int, error) {
-	var out []interface{}
-	err := _VenusMarket.contract.Call(opts, &out, "batchSize")
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-// BatchSize is a free data retrieval call binding the contract method 0xf4daaba1.
-//
-// Solidity: function batchSize() view returns(uint256)
-func (_VenusMarket *VenusMarketSession) BatchSize() (*big.Int, error) {
-	return _VenusMarket.Contract.BatchSize(&_VenusMarket.CallOpts)
-}
-
-// BatchSize is a free data retrieval call binding the contract method 0xf4daaba1.
-//
-// Solidity: function batchSize() view returns(uint256)
-func (_VenusMarket *VenusMarketCallerSession) BatchSize() (*big.Int, error) {
-	return _VenusMarket.Contract.BatchSize(&_VenusMarket.CallOpts)
-}
-
-// BlackUser is a free data retrieval call binding the contract method 0x06926173.
-//
-// Solidity: function blackUser(address ) view returns(bool)
-func (_VenusMarket *VenusMarketCaller) BlackUser(opts *bind.CallOpts, arg0 common.Address) (bool, error) {
-	var out []interface{}
-	err := _VenusMarket.contract.Call(opts, &out, "blackUser", arg0)
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-// BlackUser is a free data retrieval call binding the contract method 0x06926173.
-//
-// Solidity: function blackUser(address ) view returns(bool)
-func (_VenusMarket *VenusMarketSession) BlackUser(arg0 common.Address) (bool, error) {
-	return _VenusMarket.Contract.BlackUser(&_VenusMarket.CallOpts, arg0)
-}
-
-// BlackUser is a free data retrieval call binding the contract method 0x06926173.
-//
-// Solidity: function blackUser(address ) view returns(bool)
-func (_VenusMarket *VenusMarketCallerSession) BlackUser(arg0 common.Address) (bool, error) {
-	return _VenusMarket.Contract.BlackUser(&_VenusMarket.CallOpts, arg0)
-}
-
 // FeeRate is a free data retrieval call binding the contract method 0x978bbdb9.
 //
 // Solidity: function feeRate() view returns(uint256)
@@ -1088,12 +2390,12 @@ func (_VenusMarket *VenusMarketCallerSession) FeeRate() (*big.Int, error) {
 	return _VenusMarket.Contract.FeeRate(&_VenusMarket.CallOpts)
 }
 
-// MinCycle is a free data retrieval call binding the contract method 0xa9aa92e8.
+// GetTradingSum is a free data retrieval call binding the contract method 0x07ec619c.
 //
-// Solidity: function minCycle() view returns(uint256)
-func (_VenusMarket *VenusMarketCaller) MinCycle(opts *bind.CallOpts) (*big.Int, error) {
+// Solidity: function getTradingSum() view returns(uint256)
+func (_VenusMarket *VenusMarketCaller) GetTradingSum(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
-	err := _VenusMarket.contract.Call(opts, &out, "minCycle")
+	err := _VenusMarket.contract.Call(opts, &out, "getTradingSum")
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -1105,18 +2407,49 @@ func (_VenusMarket *VenusMarketCaller) MinCycle(opts *bind.CallOpts) (*big.Int, 
 
 }
 
-// MinCycle is a free data retrieval call binding the contract method 0xa9aa92e8.
+// GetTradingSum is a free data retrieval call binding the contract method 0x07ec619c.
 //
-// Solidity: function minCycle() view returns(uint256)
-func (_VenusMarket *VenusMarketSession) MinCycle() (*big.Int, error) {
-	return _VenusMarket.Contract.MinCycle(&_VenusMarket.CallOpts)
+// Solidity: function getTradingSum() view returns(uint256)
+func (_VenusMarket *VenusMarketSession) GetTradingSum() (*big.Int, error) {
+	return _VenusMarket.Contract.GetTradingSum(&_VenusMarket.CallOpts)
 }
 
-// MinCycle is a free data retrieval call binding the contract method 0xa9aa92e8.
+// GetTradingSum is a free data retrieval call binding the contract method 0x07ec619c.
 //
-// Solidity: function minCycle() view returns(uint256)
-func (_VenusMarket *VenusMarketCallerSession) MinCycle() (*big.Int, error) {
-	return _VenusMarket.Contract.MinCycle(&_VenusMarket.CallOpts)
+// Solidity: function getTradingSum() view returns(uint256)
+func (_VenusMarket *VenusMarketCallerSession) GetTradingSum() (*big.Int, error) {
+	return _VenusMarket.Contract.GetTradingSum(&_VenusMarket.CallOpts)
+}
+
+// GetUserCount is a free data retrieval call binding the contract method 0xb5cb15f7.
+//
+// Solidity: function getUserCount() view returns(uint256)
+func (_VenusMarket *VenusMarketCaller) GetUserCount(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _VenusMarket.contract.Call(opts, &out, "getUserCount")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// GetUserCount is a free data retrieval call binding the contract method 0xb5cb15f7.
+//
+// Solidity: function getUserCount() view returns(uint256)
+func (_VenusMarket *VenusMarketSession) GetUserCount() (*big.Int, error) {
+	return _VenusMarket.Contract.GetUserCount(&_VenusMarket.CallOpts)
+}
+
+// GetUserCount is a free data retrieval call binding the contract method 0xb5cb15f7.
+//
+// Solidity: function getUserCount() view returns(uint256)
+func (_VenusMarket *VenusMarketCallerSession) GetUserCount() (*big.Int, error) {
+	return _VenusMarket.Contract.GetUserCount(&_VenusMarket.CallOpts)
 }
 
 // NameAddr is a free data retrieval call binding the contract method 0xa310d29c.
@@ -1181,71 +2514,40 @@ func (_VenusMarket *VenusMarketCallerSession) OrderID() (*big.Int, error) {
 	return _VenusMarket.Contract.OrderID(&_VenusMarket.CallOpts)
 }
 
-// OrderIndex is a free data retrieval call binding the contract method 0x864d1260.
-//
-// Solidity: function orderIndex(uint256 ) view returns(uint256)
-func (_VenusMarket *VenusMarketCaller) OrderIndex(opts *bind.CallOpts, arg0 *big.Int) (*big.Int, error) {
-	var out []interface{}
-	err := _VenusMarket.contract.Call(opts, &out, "orderIndex", arg0)
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-// OrderIndex is a free data retrieval call binding the contract method 0x864d1260.
-//
-// Solidity: function orderIndex(uint256 ) view returns(uint256)
-func (_VenusMarket *VenusMarketSession) OrderIndex(arg0 *big.Int) (*big.Int, error) {
-	return _VenusMarket.Contract.OrderIndex(&_VenusMarket.CallOpts, arg0)
-}
-
-// OrderIndex is a free data retrieval call binding the contract method 0x864d1260.
-//
-// Solidity: function orderIndex(uint256 ) view returns(uint256)
-func (_VenusMarket *VenusMarketCallerSession) OrderIndex(arg0 *big.Int) (*big.Int, error) {
-	return _VenusMarket.Contract.OrderIndex(&_VenusMarket.CallOpts, arg0)
-}
-
 // Orders is a free data retrieval call binding the contract method 0xa85c38ef.
 //
-// Solidity: function orders(uint256 ) view returns(address owner, uint256 index, uint256 price, address reciveToken, uint256 stepTime, uint256 endTime, uint256 cycle, bool status)
+// Solidity: function orders(uint256 ) view returns(address owner, uint256 price, address tokenIn, address tokenOut, uint256 stepTime, uint256 endTime, uint256 cycle, bool status)
 func (_VenusMarket *VenusMarketCaller) Orders(opts *bind.CallOpts, arg0 *big.Int) (struct {
-	Owner       common.Address
-	Index       *big.Int
-	Price       *big.Int
-	ReciveToken common.Address
-	StepTime    *big.Int
-	EndTime     *big.Int
-	Cycle       *big.Int
-	Status      bool
+	Owner    common.Address
+	Price    *big.Int
+	TokenIn  common.Address
+	TokenOut common.Address
+	StepTime *big.Int
+	EndTime  *big.Int
+	Cycle    *big.Int
+	Status   bool
 }, error) {
 	var out []interface{}
 	err := _VenusMarket.contract.Call(opts, &out, "orders", arg0)
 
 	outstruct := new(struct {
-		Owner       common.Address
-		Index       *big.Int
-		Price       *big.Int
-		ReciveToken common.Address
-		StepTime    *big.Int
-		EndTime     *big.Int
-		Cycle       *big.Int
-		Status      bool
+		Owner    common.Address
+		Price    *big.Int
+		TokenIn  common.Address
+		TokenOut common.Address
+		StepTime *big.Int
+		EndTime  *big.Int
+		Cycle    *big.Int
+		Status   bool
 	})
 	if err != nil {
 		return *outstruct, err
 	}
 
 	outstruct.Owner = *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	outstruct.Index = *abi.ConvertType(out[1], new(*big.Int)).(**big.Int)
-	outstruct.Price = *abi.ConvertType(out[2], new(*big.Int)).(**big.Int)
-	outstruct.ReciveToken = *abi.ConvertType(out[3], new(common.Address)).(*common.Address)
+	outstruct.Price = *abi.ConvertType(out[1], new(*big.Int)).(**big.Int)
+	outstruct.TokenIn = *abi.ConvertType(out[2], new(common.Address)).(*common.Address)
+	outstruct.TokenOut = *abi.ConvertType(out[3], new(common.Address)).(*common.Address)
 	outstruct.StepTime = *abi.ConvertType(out[4], new(*big.Int)).(**big.Int)
 	outstruct.EndTime = *abi.ConvertType(out[5], new(*big.Int)).(**big.Int)
 	outstruct.Cycle = *abi.ConvertType(out[6], new(*big.Int)).(**big.Int)
@@ -1257,42 +2559,42 @@ func (_VenusMarket *VenusMarketCaller) Orders(opts *bind.CallOpts, arg0 *big.Int
 
 // Orders is a free data retrieval call binding the contract method 0xa85c38ef.
 //
-// Solidity: function orders(uint256 ) view returns(address owner, uint256 index, uint256 price, address reciveToken, uint256 stepTime, uint256 endTime, uint256 cycle, bool status)
+// Solidity: function orders(uint256 ) view returns(address owner, uint256 price, address tokenIn, address tokenOut, uint256 stepTime, uint256 endTime, uint256 cycle, bool status)
 func (_VenusMarket *VenusMarketSession) Orders(arg0 *big.Int) (struct {
-	Owner       common.Address
-	Index       *big.Int
-	Price       *big.Int
-	ReciveToken common.Address
-	StepTime    *big.Int
-	EndTime     *big.Int
-	Cycle       *big.Int
-	Status      bool
+	Owner    common.Address
+	Price    *big.Int
+	TokenIn  common.Address
+	TokenOut common.Address
+	StepTime *big.Int
+	EndTime  *big.Int
+	Cycle    *big.Int
+	Status   bool
 }, error) {
 	return _VenusMarket.Contract.Orders(&_VenusMarket.CallOpts, arg0)
 }
 
 // Orders is a free data retrieval call binding the contract method 0xa85c38ef.
 //
-// Solidity: function orders(uint256 ) view returns(address owner, uint256 index, uint256 price, address reciveToken, uint256 stepTime, uint256 endTime, uint256 cycle, bool status)
+// Solidity: function orders(uint256 ) view returns(address owner, uint256 price, address tokenIn, address tokenOut, uint256 stepTime, uint256 endTime, uint256 cycle, bool status)
 func (_VenusMarket *VenusMarketCallerSession) Orders(arg0 *big.Int) (struct {
-	Owner       common.Address
-	Index       *big.Int
-	Price       *big.Int
-	ReciveToken common.Address
-	StepTime    *big.Int
-	EndTime     *big.Int
-	Cycle       *big.Int
-	Status      bool
+	Owner    common.Address
+	Price    *big.Int
+	TokenIn  common.Address
+	TokenOut common.Address
+	StepTime *big.Int
+	EndTime  *big.Int
+	Cycle    *big.Int
+	Status   bool
 }, error) {
 	return _VenusMarket.Contract.Orders(&_VenusMarket.CallOpts, arg0)
 }
 
-// SuccIndex is a free data retrieval call binding the contract method 0x9c23547d.
+// TradingSum is a free data retrieval call binding the contract method 0x29dc66c3.
 //
-// Solidity: function succIndex() view returns(uint256)
-func (_VenusMarket *VenusMarketCaller) SuccIndex(opts *bind.CallOpts) (*big.Int, error) {
+// Solidity: function tradingSum() view returns(uint256)
+func (_VenusMarket *VenusMarketCaller) TradingSum(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
-	err := _VenusMarket.contract.Call(opts, &out, "succIndex")
+	err := _VenusMarket.contract.Call(opts, &out, "tradingSum")
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -1304,18 +2606,18 @@ func (_VenusMarket *VenusMarketCaller) SuccIndex(opts *bind.CallOpts) (*big.Int,
 
 }
 
-// SuccIndex is a free data retrieval call binding the contract method 0x9c23547d.
+// TradingSum is a free data retrieval call binding the contract method 0x29dc66c3.
 //
-// Solidity: function succIndex() view returns(uint256)
-func (_VenusMarket *VenusMarketSession) SuccIndex() (*big.Int, error) {
-	return _VenusMarket.Contract.SuccIndex(&_VenusMarket.CallOpts)
+// Solidity: function tradingSum() view returns(uint256)
+func (_VenusMarket *VenusMarketSession) TradingSum() (*big.Int, error) {
+	return _VenusMarket.Contract.TradingSum(&_VenusMarket.CallOpts)
 }
 
-// SuccIndex is a free data retrieval call binding the contract method 0x9c23547d.
+// TradingSum is a free data retrieval call binding the contract method 0x29dc66c3.
 //
-// Solidity: function succIndex() view returns(uint256)
-func (_VenusMarket *VenusMarketCallerSession) SuccIndex() (*big.Int, error) {
-	return _VenusMarket.Contract.SuccIndex(&_VenusMarket.CallOpts)
+// Solidity: function tradingSum() view returns(uint256)
+func (_VenusMarket *VenusMarketCallerSession) TradingSum() (*big.Int, error) {
+	return _VenusMarket.Contract.TradingSum(&_VenusMarket.CallOpts)
 }
 
 // UserToOrder is a free data retrieval call binding the contract method 0x6f53f770.
@@ -1370,67 +2672,25 @@ func (_VenusMarket *VenusMarketTransactorSession) CancelOrder(_oid *big.Int) (*t
 	return _VenusMarket.Contract.CancelOrder(&_VenusMarket.TransactOpts, _oid)
 }
 
-// CreateOrder is a paid mutator transaction binding the contract method 0x328efc47.
+// CreateOrder is a paid mutator transaction binding the contract method 0xdd544f45.
 //
-// Solidity: function createOrder(uint256 _price, address _receiveToken, uint256 _cycle, uint256 _endTime) returns()
-func (_VenusMarket *VenusMarketTransactor) CreateOrder(opts *bind.TransactOpts, _price *big.Int, _receiveToken common.Address, _cycle *big.Int, _endTime *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.contract.Transact(opts, "createOrder", _price, _receiveToken, _cycle, _endTime)
+// Solidity: function createOrder(uint256 _price, address _tokenIn, address _tokenOut, uint256 _cycle, uint256 _endTime) returns()
+func (_VenusMarket *VenusMarketTransactor) CreateOrder(opts *bind.TransactOpts, _price *big.Int, _tokenIn common.Address, _tokenOut common.Address, _cycle *big.Int, _endTime *big.Int) (*types.Transaction, error) {
+	return _VenusMarket.contract.Transact(opts, "createOrder", _price, _tokenIn, _tokenOut, _cycle, _endTime)
 }
 
-// CreateOrder is a paid mutator transaction binding the contract method 0x328efc47.
+// CreateOrder is a paid mutator transaction binding the contract method 0xdd544f45.
 //
-// Solidity: function createOrder(uint256 _price, address _receiveToken, uint256 _cycle, uint256 _endTime) returns()
-func (_VenusMarket *VenusMarketSession) CreateOrder(_price *big.Int, _receiveToken common.Address, _cycle *big.Int, _endTime *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.Contract.CreateOrder(&_VenusMarket.TransactOpts, _price, _receiveToken, _cycle, _endTime)
+// Solidity: function createOrder(uint256 _price, address _tokenIn, address _tokenOut, uint256 _cycle, uint256 _endTime) returns()
+func (_VenusMarket *VenusMarketSession) CreateOrder(_price *big.Int, _tokenIn common.Address, _tokenOut common.Address, _cycle *big.Int, _endTime *big.Int) (*types.Transaction, error) {
+	return _VenusMarket.Contract.CreateOrder(&_VenusMarket.TransactOpts, _price, _tokenIn, _tokenOut, _cycle, _endTime)
 }
 
-// CreateOrder is a paid mutator transaction binding the contract method 0x328efc47.
+// CreateOrder is a paid mutator transaction binding the contract method 0xdd544f45.
 //
-// Solidity: function createOrder(uint256 _price, address _receiveToken, uint256 _cycle, uint256 _endTime) returns()
-func (_VenusMarket *VenusMarketTransactorSession) CreateOrder(_price *big.Int, _receiveToken common.Address, _cycle *big.Int, _endTime *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.Contract.CreateOrder(&_VenusMarket.TransactOpts, _price, _receiveToken, _cycle, _endTime)
-}
-
-// SetBatch is a paid mutator transaction binding the contract method 0xb76060f7.
-//
-// Solidity: function setBatch(uint256 _batch) returns()
-func (_VenusMarket *VenusMarketTransactor) SetBatch(opts *bind.TransactOpts, _batch *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.contract.Transact(opts, "setBatch", _batch)
-}
-
-// SetBatch is a paid mutator transaction binding the contract method 0xb76060f7.
-//
-// Solidity: function setBatch(uint256 _batch) returns()
-func (_VenusMarket *VenusMarketSession) SetBatch(_batch *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.Contract.SetBatch(&_VenusMarket.TransactOpts, _batch)
-}
-
-// SetBatch is a paid mutator transaction binding the contract method 0xb76060f7.
-//
-// Solidity: function setBatch(uint256 _batch) returns()
-func (_VenusMarket *VenusMarketTransactorSession) SetBatch(_batch *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.Contract.SetBatch(&_VenusMarket.TransactOpts, _batch)
-}
-
-// SetBlackUser is a paid mutator transaction binding the contract method 0x79e3001a.
-//
-// Solidity: function setBlackUser(address _user, bool _canUse) returns()
-func (_VenusMarket *VenusMarketTransactor) SetBlackUser(opts *bind.TransactOpts, _user common.Address, _canUse bool) (*types.Transaction, error) {
-	return _VenusMarket.contract.Transact(opts, "setBlackUser", _user, _canUse)
-}
-
-// SetBlackUser is a paid mutator transaction binding the contract method 0x79e3001a.
-//
-// Solidity: function setBlackUser(address _user, bool _canUse) returns()
-func (_VenusMarket *VenusMarketSession) SetBlackUser(_user common.Address, _canUse bool) (*types.Transaction, error) {
-	return _VenusMarket.Contract.SetBlackUser(&_VenusMarket.TransactOpts, _user, _canUse)
-}
-
-// SetBlackUser is a paid mutator transaction binding the contract method 0x79e3001a.
-//
-// Solidity: function setBlackUser(address _user, bool _canUse) returns()
-func (_VenusMarket *VenusMarketTransactorSession) SetBlackUser(_user common.Address, _canUse bool) (*types.Transaction, error) {
-	return _VenusMarket.Contract.SetBlackUser(&_VenusMarket.TransactOpts, _user, _canUse)
+// Solidity: function createOrder(uint256 _price, address _tokenIn, address _tokenOut, uint256 _cycle, uint256 _endTime) returns()
+func (_VenusMarket *VenusMarketTransactorSession) CreateOrder(_price *big.Int, _tokenIn common.Address, _tokenOut common.Address, _cycle *big.Int, _endTime *big.Int) (*types.Transaction, error) {
+	return _VenusMarket.Contract.CreateOrder(&_VenusMarket.TransactOpts, _price, _tokenIn, _tokenOut, _cycle, _endTime)
 }
 
 // SetFeeRate is a paid mutator transaction binding the contract method 0x45596e2e.
@@ -1454,25 +2714,25 @@ func (_VenusMarket *VenusMarketTransactorSession) SetFeeRate(_feeRate *big.Int) 
 	return _VenusMarket.Contract.SetFeeRate(&_VenusMarket.TransactOpts, _feeRate)
 }
 
-// TrigTask is a paid mutator transaction binding the contract method 0xd5e7ea62.
+// TrigOrder is a paid mutator transaction binding the contract method 0xf14393bf.
 //
-// Solidity: function trigTask(uint256 _start) returns()
-func (_VenusMarket *VenusMarketTransactor) TrigTask(opts *bind.TransactOpts, _start *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.contract.Transact(opts, "trigTask", _start)
+// Solidity: function trigOrder(uint256 _oid) returns()
+func (_VenusMarket *VenusMarketTransactor) TrigOrder(opts *bind.TransactOpts, _oid *big.Int) (*types.Transaction, error) {
+	return _VenusMarket.contract.Transact(opts, "trigOrder", _oid)
 }
 
-// TrigTask is a paid mutator transaction binding the contract method 0xd5e7ea62.
+// TrigOrder is a paid mutator transaction binding the contract method 0xf14393bf.
 //
-// Solidity: function trigTask(uint256 _start) returns()
-func (_VenusMarket *VenusMarketSession) TrigTask(_start *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.Contract.TrigTask(&_VenusMarket.TransactOpts, _start)
+// Solidity: function trigOrder(uint256 _oid) returns()
+func (_VenusMarket *VenusMarketSession) TrigOrder(_oid *big.Int) (*types.Transaction, error) {
+	return _VenusMarket.Contract.TrigOrder(&_VenusMarket.TransactOpts, _oid)
 }
 
-// TrigTask is a paid mutator transaction binding the contract method 0xd5e7ea62.
+// TrigOrder is a paid mutator transaction binding the contract method 0xf14393bf.
 //
-// Solidity: function trigTask(uint256 _start) returns()
-func (_VenusMarket *VenusMarketTransactorSession) TrigTask(_start *big.Int) (*types.Transaction, error) {
-	return _VenusMarket.Contract.TrigTask(&_VenusMarket.TransactOpts, _start)
+// Solidity: function trigOrder(uint256 _oid) returns()
+func (_VenusMarket *VenusMarketTransactorSession) TrigOrder(_oid *big.Int) (*types.Transaction, error) {
+	return _VenusMarket.Contract.TrigOrder(&_VenusMarket.TransactOpts, _oid)
 }
 
 // VenusMarketCancelOrderIterator is returned from FilterCancelOrder and is used to iterate over the raw logs and unpacked data for CancelOrder events raised by the VenusMarket contract.
@@ -1678,18 +2938,19 @@ func (it *VenusMarketCreateOrderIterator) Close() error {
 
 // VenusMarketCreateOrder represents a CreateOrder event raised by the VenusMarket contract.
 type VenusMarketCreateOrder struct {
-	Oid          *big.Int
-	User         common.Address
-	Price        *big.Int
-	ReceiveToken common.Address
-	Cycle        *big.Int
-	EndTime      *big.Int
-	Raw          types.Log // Blockchain specific contextual infos
+	Oid      *big.Int
+	User     common.Address
+	Price    *big.Int
+	TokenIn  common.Address
+	TokenOut common.Address
+	Cycle    *big.Int
+	EndTime  *big.Int
+	Raw      types.Log // Blockchain specific contextual infos
 }
 
-// FilterCreateOrder is a free log retrieval operation binding the contract event 0x23df57ff35565965f751a83073b22102fcf2bf4fb084463c0c5b68ddc9a5b128.
+// FilterCreateOrder is a free log retrieval operation binding the contract event 0xfd4863916f070195061bc122e7f2e92e7b04d1f0dcfa8ea85d188cc9ac033d1b.
 //
-// Solidity: event CreateOrder(uint256 _oid, address user, uint256 _price, address _receiveToken, uint256 _cycle, uint256 _endTime)
+// Solidity: event CreateOrder(uint256 _oid, address user, uint256 _price, address _tokenIn, address _tokenOut, uint256 _cycle, uint256 _endTime)
 func (_VenusMarket *VenusMarketFilterer) FilterCreateOrder(opts *bind.FilterOpts) (*VenusMarketCreateOrderIterator, error) {
 
 	logs, sub, err := _VenusMarket.contract.FilterLogs(opts, "CreateOrder")
@@ -1699,9 +2960,9 @@ func (_VenusMarket *VenusMarketFilterer) FilterCreateOrder(opts *bind.FilterOpts
 	return &VenusMarketCreateOrderIterator{contract: _VenusMarket.contract, event: "CreateOrder", logs: logs, sub: sub}, nil
 }
 
-// WatchCreateOrder is a free log subscription operation binding the contract event 0x23df57ff35565965f751a83073b22102fcf2bf4fb084463c0c5b68ddc9a5b128.
+// WatchCreateOrder is a free log subscription operation binding the contract event 0xfd4863916f070195061bc122e7f2e92e7b04d1f0dcfa8ea85d188cc9ac033d1b.
 //
-// Solidity: event CreateOrder(uint256 _oid, address user, uint256 _price, address _receiveToken, uint256 _cycle, uint256 _endTime)
+// Solidity: event CreateOrder(uint256 _oid, address user, uint256 _price, address _tokenIn, address _tokenOut, uint256 _cycle, uint256 _endTime)
 func (_VenusMarket *VenusMarketFilterer) WatchCreateOrder(opts *bind.WatchOpts, sink chan<- *VenusMarketCreateOrder) (event.Subscription, error) {
 
 	logs, sub, err := _VenusMarket.contract.WatchLogs(opts, "CreateOrder")
@@ -1736,9 +2997,9 @@ func (_VenusMarket *VenusMarketFilterer) WatchCreateOrder(opts *bind.WatchOpts, 
 	}), nil
 }
 
-// ParseCreateOrder is a log parse operation binding the contract event 0x23df57ff35565965f751a83073b22102fcf2bf4fb084463c0c5b68ddc9a5b128.
+// ParseCreateOrder is a log parse operation binding the contract event 0xfd4863916f070195061bc122e7f2e92e7b04d1f0dcfa8ea85d188cc9ac033d1b.
 //
-// Solidity: event CreateOrder(uint256 _oid, address user, uint256 _price, address _receiveToken, uint256 _cycle, uint256 _endTime)
+// Solidity: event CreateOrder(uint256 _oid, address user, uint256 _price, address _tokenIn, address _tokenOut, uint256 _cycle, uint256 _endTime)
 func (_VenusMarket *VenusMarketFilterer) ParseCreateOrder(log types.Log) (*VenusMarketCreateOrder, error) {
 	event := new(VenusMarketCreateOrder)
 	if err := _VenusMarket.contract.UnpackLog(event, "CreateOrder", log); err != nil {
