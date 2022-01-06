@@ -44,6 +44,7 @@ func watcher() {
 	sigc := make(chan os.Signal, 1)
 	signal.Notify(sigc, syscall.SIGINT, syscall.SIGTERM)
 	defer signal.Stop(sigc)
+	<-sigc
 }
 
 func loop(ctx context.Context) {
@@ -122,7 +123,7 @@ func trigOrder(id int64) error {
 	if tmp.EndTime.Int64() > start || tmp.StepTime.Int64() > start {
 		return nil
 	}
-	_, err = cfg.MarketSession.TrigTask(big.NewInt(id))
+	_, err = cfg.MarketSession.TrigOrder(big.NewInt(id))
 	if err == nil {
 		checkErr("failed to update trig times", UpdateOrder(id))
 	}
