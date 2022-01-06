@@ -16,10 +16,11 @@ import (
 )
 
 var (
-	cfg      *Config
-	path     = flag.String("config", "./config.json", "config file path")
-	logFlag  = flag.Int("loglevel", 3, "Log level to use for proxyServer")
-	password = flag.String("password", "123456", "keystore password")
+	cfg *Config
+
+	path    = flag.String("config", "./config.json", "config file path")
+	logFlag = flag.Int("loglevel", 3, "Log level to use for proxyServer")
+	cycle   = flag.Int("cycle", 60, "Scan at an interval time(minute)")
 )
 
 func main() {
@@ -36,7 +37,7 @@ func main() {
 	ctx := context.Background()
 	defer ctx.Done()
 
-	go loop(ctx)
+	go loop2(ctx)
 	watcher()
 }
 
@@ -96,6 +97,42 @@ func loop(ctx context.Context) {
 
 		case <-ctx.Done():
 			return
+		}
+	}
+}
+
+func loop2(ctx context.Context) {
+	var (
+		tick     = time.NewTicker(time.Minute * time.Duration(*cycle))
+		contract = cfg.MarketSession
+	)
+	defer tick.Stop()
+
+	for {
+		select {
+		case <-ctx.Done():
+			return
+		case <-tick.C:
+			id, err := contract.OrderID()
+			if err != nil {
+				log.Error("Failed to get orderId", "err", err)
+				continue
+			}
+			orderId := id.Int64()
+			for i := 10000; i <= int(orderId); i++ {
+				oid := big.NewInt(int64(i))
+				order, err := contract.Orders(oid)
+				if err != nil {
+					log.Error("failed to get order", "err", err)
+				}
+				stepTime, endTime, curTime := order.StepTime.Int64(), order.EndTime.Int64(), time.Now().Unix()
+				if order.Status && endTime > curTime && stepTime < curTime {
+					_, err := contract.TrigOrder(oid)
+					if err != nil {
+						log.Error("failed to trigger order", "orderId", i, "err", err)
+					}
+				}
+			}
 		}
 	}
 }
