@@ -102,36 +102,41 @@ func loop(ctx context.Context) {
 }
 
 func loop2(ctx context.Context) {
-	var (
-		tick     = time.NewTicker(time.Minute * time.Duration(*cycle))
-		contract = cfg.MarketSession
-	)
+	tick := time.NewTicker(time.Minute * time.Duration(*cycle))
 	defer tick.Stop()
 
+	// The first time scan orders.
+	scanOrders2()
 	for {
 		select {
 		case <-ctx.Done():
 			return
 		case <-tick.C:
-			id, err := contract.OrderID()
+			scanOrders2()
+		}
+	}
+}
+
+func scanOrders2() {
+	contract := cfg.MarketSession
+
+	id, err := contract.OrderID()
+	if err != nil {
+		log.Error("Failed to get orderId", "err", err)
+		return
+	}
+	orderId := id.Int64()
+	for i := 10000; i <= int(orderId); i++ {
+		oid := big.NewInt(int64(i))
+		order, err := contract.Orders(oid)
+		if err != nil {
+			log.Error("failed to get order", "err", err)
+		}
+		stepTime, endTime, curTime := order.StepTime.Int64(), order.EndTime.Int64(), time.Now().Unix()
+		if order.Status && endTime > curTime && stepTime < curTime {
+			_, err := contract.TrigOrder(oid)
 			if err != nil {
-				log.Error("Failed to get orderId", "err", err)
-				continue
-			}
-			orderId := id.Int64()
-			for i := 10000; i <= int(orderId); i++ {
-				oid := big.NewInt(int64(i))
-				order, err := contract.Orders(oid)
-				if err != nil {
-					log.Error("failed to get order", "err", err)
-				}
-				stepTime, endTime, curTime := order.StepTime.Int64(), order.EndTime.Int64(), time.Now().Unix()
-				if order.Status && endTime > curTime && stepTime < curTime {
-					_, err := contract.TrigOrder(oid)
-					if err != nil {
-						log.Error("failed to trigger order", "orderId", i, "err", err)
-					}
-				}
+				log.Error("failed to trigger order", "orderId", i, "err", err)
 			}
 		}
 	}
