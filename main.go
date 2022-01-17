@@ -1,13 +1,12 @@
 package main
 
 import (
-	"bot/market"
 	"context"
 	"flag"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"fmt"
 	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/event"
 	"github.com/ethereum/go-ethereum/log"
+	"io"
 	"math/big"
 	"os"
 	"os/signal"
@@ -20,13 +19,25 @@ var (
 
 	path    = flag.String("config", "./config.json", "config file path")
 	logFlag = flag.Int("loglevel", 3, "Log level to use for proxyServer")
+	logFile = flag.String("logfile", "", "Tells the bot where to write log entries")
 	cycle   = flag.Int("cycle", 60, "Scan at an interval time(minute)")
 )
 
 func main() {
 	// Parse the flags and set up the logger to print everything requested
 	flag.Parse()
-	log.Root().SetHandler(log.LvlFilterHandler(log.Lvl(*logFlag), log.StreamHandler(os.Stderr, log.TerminalFormat(true))))
+	stream := log.StreamHandler(os.Stderr, log.TerminalFormat(true))
+	if len(*logFile) != 0 {
+		fp, err := os.OpenFile(*logFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
+		if err != nil {
+			fmt.Println("Failed to open log file", "err", err)
+			os.Exit(1)
+		}
+		stream = log.StreamHandler(io.Writer(fp), log.TerminalFormat(true))
+	}
+	glogger := log.NewGlogHandler(stream)
+	glogger.Verbosity(log.Lvl(*logFlag))
+	log.Root().SetHandler(glogger)
 
 	var err error
 	cfg, err = NewConfig(*path)
@@ -46,59 +57,6 @@ func watcher() {
 	signal.Notify(sigc, syscall.SIGINT, syscall.SIGTERM)
 	defer signal.Stop(sigc)
 	<-sigc
-}
-
-func loop(ctx context.Context) {
-	var (
-		scope      event.SubscriptionScope
-		createSink = make(chan *market.VenusMarketCreateOrder, 16)
-		delSink    = make(chan *market.VenusMarketCancelOrder, 16)
-		retry      = time.Minute * 5
-		errMsg     = make(chan error, 2)
-	)
-	defer scope.Close()
-
-	scope.Track(event.ResubscribeErr(retry, func(ctx context.Context, err error) (event.Subscription, error) {
-		if err != nil {
-			errMsg <- err
-		}
-		return cfg.MarketSession.Contract.WatchCreateOrder(&bind.WatchOpts{Context: ctx, Start: &cfg.StartNumber}, createSink)
-	}))
-
-	scope.Track(event.ResubscribeErr(retry, func(ctx context.Context, err error) (event.Subscription, error) {
-		if err != nil {
-			errMsg <- err
-		}
-		return cfg.MarketSession.Contract.WatchCancelOrder(&bind.WatchOpts{Context: ctx, Start: &cfg.StartNumber}, delSink)
-	}))
-
-	tick := time.NewTicker(time.Minute * 10)
-	defer tick.Stop()
-
-	for {
-		select {
-		case sink := <-createSink:
-			checkErr("failed to insert order", InsertOrder(&VenusMarket{
-				Number: sink.Raw.BlockNumber,
-				TxHash: sink.Raw.TxHash.String(),
-
-				Id:      sink.Oid.Int64(),
-				Address: sink.User.String(),
-				Price:   sink.Price.String(),
-			}))
-		case sink := <-delSink:
-			checkErr("failed to delete order", DelOrder(sink.Oid.Int64()))
-
-		case <-tick.C:
-			checkErr("failed to scan orders", scanOrders())
-
-		case err := <-errMsg:
-			log.Error("failed to watch order", "error", err)
-
-		case <-ctx.Done():
-			return
-		}
-	}
 }
 
 func loop2(ctx context.Context) {
@@ -125,6 +83,8 @@ func scanOrders2() {
 		log.Error("Failed to get orderId", "err", err)
 		return
 	}
+	log.Info("Get the latest orderId", "orderId", id.Int64())
+
 	orderId := id.Int64()
 	for i := 10000; i <= int(orderId); i++ {
 		oid := big.NewInt(int64(i))
@@ -132,6 +92,8 @@ func scanOrders2() {
 		if err != nil {
 			log.Error("failed to get order", "err", err)
 		}
+		log.Info("Get order detail", "order.address", order.Owner.String(), "order.status", order.Status)
+
 		stepTime, endTime, curTime := order.StepTime.Int64(), order.EndTime.Int64(), time.Now().Unix()
 		if order.Status && endTime > curTime && stepTime < curTime {
 			_, err := contract.TrigOrder(oid)
