@@ -1,4 +1,4 @@
-package main
+package store
 
 import (
 	"github.com/ethereum/go-ethereum/log"
@@ -8,6 +8,11 @@ import (
 
 var (
 	db *gorm.DB
+)
+
+const (
+	Creater = iota
+	Cancel
 )
 
 func init() {
@@ -23,13 +28,15 @@ func init() {
 }
 
 type VenusMarket struct {
-	Id        int64 `gorm:"primaryKey"`
-	Address   string
-	Price     string
-	TrigTimes int64 `gorm:"column:trig_times"`
+	Id   int64 `gorm:"primaryKey"`
+	Type int
 	// block message
-	Number uint64 `gorm:"index"`
-	TxHash string `gorm:"index"`
+	Number   uint64 `gorm:"index"`
+	TxHash   string `gorm:"index"`
+	User     string `gorm:"index"`
+	TokenIn  string
+	TokenOut string
+	Price    string
 }
 
 func InsertOrder(order *VenusMarket) error {
@@ -50,5 +57,13 @@ func ScanOrders() ([]int64, error) {
 }
 
 func UpdateOrder(id int64) error {
-	return db.Model(&VenusMarket{}).Where("id = ?", id).Update("trig_times", gorm.Expr("trig_times + 1")).Error
+	return db.Model(&VenusMarket{}).Where("id = ?", id).Update("type", gorm.Expr("1")).Error
+}
+
+func GetOrder(id int64) (*VenusMarket, error) {
+	res := &VenusMarket{}
+	if err := db.First(res, id).Error; err != nil {
+		return nil, err
+	}
+	return res, nil
 }

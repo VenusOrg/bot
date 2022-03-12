@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	"bot/market"
@@ -20,7 +20,7 @@ type Config struct {
 	TrigPrivate   string                     `json:"trig_private"`
 	MarketAddress common.Address             `json:"market_address"`
 	DBurl         string                     `json:"db_url"`
-	MarketSession *market.VenusMarketSession `json:"-"`
+	Market        *market.VenusMarketSession `json:"-"`
 }
 
 func NewConfig(path string) (*Config, error) {
@@ -48,7 +48,7 @@ func NewConfig(path string) (*Config, error) {
 
 	mkt, _ := market.NewVenusMarket(cfg.MarketAddress, client)
 
-	cfg.MarketSession = &market.VenusMarketSession{
+	cfg.Market = &market.VenusMarketSession{
 		Contract:     mkt,
 		TransactOpts: *account,
 	}
@@ -56,7 +56,7 @@ func NewConfig(path string) (*Config, error) {
 	return cfg, nil
 }
 
-func checkErr(msg string, err error) {
+func CheckErr(msg string, err error) {
 	if err != nil {
 		log.Error(msg, "error", err)
 	}

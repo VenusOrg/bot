@@ -1,21 +1,25 @@
 package main
 
 import (
+	"bot/config"
+	"bot/store"
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/log"
+	"github.com/gin-gonic/gin"
 	"io"
-	"math/big"
+	"net/http"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
-	"time"
 )
 
 var (
-	cfg *Config
+	cfg *config.Config
 
 	path    = flag.String("config", "./config.json", "config file path")
 	logFlag = flag.Int("loglevel", 3, "Log level to use for proxyServer")
@@ -40,7 +44,7 @@ func main() {
 	log.Root().SetHandler(glogger)
 
 	var err error
-	cfg, err = NewConfig(*path)
+	cfg, err = config.NewConfig(*path)
 	if err != nil {
 		utils.Fatalf("config load failed", err)
 	}
@@ -49,7 +53,33 @@ func main() {
 	defer ctx.Done()
 
 	go loop2(ctx)
-	watcher()
+
+	RunServer(getApis())
+}
+
+func getApis() map[string]gin.HandlerFunc {
+	return map[string]gin.HandlerFunc{
+		"getOrder": func(c *gin.Context) {
+			data := c.Query("count")
+			id, err := strconv.Atoi(data)
+			if err != nil {
+				log.Error("Count type is a digital", "err", err)
+				c.String(http.StatusBadRequest, "Count type is a digital, err %s", err)
+				return
+			}
+			res, err := store.GetOrder(int64(id))
+			if err != nil {
+				c.String(http.StatusInternalServerError, "failed to get order", err)
+				return
+			}
+			buf, err := json.Marshal(res)
+			if err != nil {
+				c.String(http.StatusInternalServerError, "failed to marshal order content", err)
+				return
+			}
+			c.String(http.StatusOK, string(buf))
+		},
+	}
 }
 
 func watcher() {
@@ -57,79 +87,4 @@ func watcher() {
 	signal.Notify(sigc, syscall.SIGINT, syscall.SIGTERM)
 	defer signal.Stop(sigc)
 	<-sigc
-}
-
-func loop2(ctx context.Context) {
-	tick := time.NewTicker(time.Minute * time.Duration(*cycle))
-	defer tick.Stop()
-
-	// The first time scan orders.
-	scanOrders2()
-	for {
-		select {
-		case <-ctx.Done():
-			return
-		case <-tick.C:
-			scanOrders2()
-		}
-	}
-}
-
-func scanOrders2() {
-	contract := cfg.MarketSession
-
-	id, err := contract.OrderID()
-	if err != nil {
-		log.Error("Failed to get orderId", "err", err)
-		return
-	}
-	log.Info("Get the latest orderId", "orderId", id.Int64())
-
-	orderId := id.Int64()
-	for i := 10000; i <= int(orderId); i++ {
-		oid := big.NewInt(int64(i))
-		order, err := contract.Orders(oid)
-		if err != nil {
-			log.Error("failed to get order", "err", err)
-		}
-		log.Info("Get order detail", "order.address", order.Owner.String(), "order.status", order.Status)
-
-		stepTime, endTime, curTime := order.StepTime.Int64(), order.EndTime.Int64(), time.Now().Unix()
-		if order.Status && endTime > curTime && stepTime < curTime {
-			_, err := contract.TrigOrder(oid)
-			if err != nil {
-				log.Error("failed to trigger order", "orderId", i, "err", err)
-			}
-		}
-	}
-}
-
-func scanOrders() error {
-	ids, err := ScanOrders()
-	if err != nil {
-		return err
-	}
-	for _, id := range ids {
-		checkErr("failed to trig order", trigOrder(id))
-	}
-	return nil
-}
-
-func trigOrder(id int64) error {
-	start := time.Now().Unix()
-	tmp, err := cfg.MarketSession.Orders(big.NewInt(id))
-	if err != nil {
-		return err
-	}
-	if !tmp.Status {
-		return DelOrder(id)
-	}
-	if tmp.EndTime.Int64() > start || tmp.StepTime.Int64() > start {
-		return nil
-	}
-	_, err = cfg.MarketSession.TrigOrder(big.NewInt(id))
-	if err == nil {
-		checkErr("failed to update trig times", UpdateOrder(id))
-	}
-	return err
 }
