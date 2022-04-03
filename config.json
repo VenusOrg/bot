@@ -1,6 +1,6 @@
 {
   "chain_id": 4,
-  "endpoint": "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+  "endpoint": "wss://rpc-mumbai.matic.today",
   "trig_private": "0x4b5e29248775479e9ccb3284ed82e98dcc2483f9698f7ee473157fadafe10644",
   "market_address": "0x6463da433c6379339A8FeB09453B55f572420ad7",
   "start_Number": 9796590
