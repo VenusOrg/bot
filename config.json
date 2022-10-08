@@ -2,6 +2,6 @@
   "chain_id": 80001,
   "endpoint": "wss://rpc-mumbai.matic.today",
   "trig_private": "0x4b5e29248775479e9ccb3284ed82e98dcc2483f9698f7ee473157fadafe10644",
-  "market_address": "0x6fc708Ba00083B452B14e0c7711e0e387786c4D2",
+  "market_address": "0x4DDfA0BcD0E60345c900704c1ea89AF11D4b15f3",
   "start_Number": 9796590
 }
